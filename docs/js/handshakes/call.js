@@ -27,8 +27,9 @@ export const AMP = 0.15 * Math.SQRT2;
 export const FIDELITY = ['spec', 'nominal', 'approx'];
 
 export class Call {
-  constructor({ id, title, standard }) {
-    this.meta = { id, title, standard };
+  /** @param {{id: string, title: string, standard: string, lanes?: string[]}} meta */
+  constructor({ id, title, standard, lanes = ['Calling modem', 'Answering modem', 'Telephone network'] }) {
+    this.meta = { id, title, standard, lanes };
     this.lines = [new Line(), new Line(), new Line()];
     this.segments = [];
     this.steps = [];

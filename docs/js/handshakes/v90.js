@@ -162,7 +162,7 @@ const frameBits = (rate) => Math.round((rate * 6) / PCM_RATE);
  * @param {boolean} [o.v8bis] include the answering modem's V.8 bis greeting
  */
 export function v90({ rate = 49333, upstream = 28800, dial = true, v8bis = true, roundTrip = 0.012, id = 'v90' } = {}) {
-  const call = new Call({ id, title: `V.90, ${rate.toLocaleString('en-US')} bit/s down`, standard: 'V.90' });
+  const call = new Call({ id, title: `V.90, ${rate.toLocaleString('en-US')} bit/s down`, standard: 'V.90', lanes: ['Your modem (analogue)', 'ISP’s modem (digital)', 'Telephone network'] });
   const rt = roundTrip;
   const react = (from, t, wait) => t + wait + (from === CALLER ? rt : 0);
   const upName = '3200'; // the one upstream symbol rate every V.90 modem must support (6.2)

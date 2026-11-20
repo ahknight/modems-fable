@@ -41,7 +41,8 @@ export const SPECTRO = {
   hop: 64, // 5.3 ms per column
   size: 1024, // zero-padded: 11.7 Hz per row
   maxHz: 4000,
-  floorDb: -62,
+  floorDb: -54,
+  reference: 0.25, // sine amplitude drawn at full brightness; modems here transmit near 0.21
 };
 
 /**
@@ -50,7 +51,7 @@ export const SPECTRO = {
  * @returns {{data: Uint8Array, cols: number, rows: number, secondsPerCol: number, hzPerRow: number}}
  */
 export function spectrogram(signal) {
-  const { decimate, window, hop, size, maxHz, floorDb } = SPECTRO;
+  const { decimate, window, hop, size, maxHz, floorDb, reference } = SPECTRO;
   const rate = SR / decimate;
   const n = Math.floor(signal.length / decimate);
   const low = new Float32Array(n);
@@ -65,7 +66,7 @@ export function spectrogram(signal) {
   const hann = Float32Array.from({ length: window }, (_, i) => 0.5 - 0.5 * Math.cos((TAU * i) / (window - 1)));
   const re = new Float32Array(size);
   const im = new Float32Array(size);
-  const norm = 4 / window; // a full-scale sine reads 0 dB
+  const norm = 4 / window / reference; // a sine at the reference amplitude reads 0 dB
   for (let c = 0; c < cols; c++) {
     re.fill(0);
     im.fill(0);

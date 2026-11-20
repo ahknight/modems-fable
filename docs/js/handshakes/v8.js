@@ -74,7 +74,7 @@ function repeated(seq, count, cutBits = Infinity, tail = [], tailName = '') {
 export function v8(call, { t = 0, rt, pcm = false, v8bis = false }) {
   const v21 = FSK_PLANS.v21;
   let ansam = t + 1.0;
-  call.step(t, 'The line connects', 'The answering modem picks up and waits a moment before speaking.', 'CCITT V.25');
+  call.step(t, 'The line connects', 'The answering modem picks up and waits a moment before speaking.', 'V.25, 1968');
 
   if (v8bis) {
     // V.8 bis CRe from the answering station: dual tone, then a single identifying tone.

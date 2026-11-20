@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Handshake: what your modem was saying, 300 baud to 56k</title>
+<meta name="description" content="A history of the dial-up modem told through its sound. Every squeal, hiss and bong of the handshake, synthesized from the original standards and explained, one generation at a time.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="The Handshake">
+<meta property="og:description" content="What your modem was saying, from 300 baud to 56k.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23171a1f'/%3E%3Cpath d='M3 16h4l2-9 3 18 3-14 2 8 2-5 2 4 2-2h6' fill='none' stroke='%23ffb000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/ibm-plex-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the story</a>
+
+<nav class="topbar" aria-label="Chapters">
+  <a class="brand" href="#top">The Handshake</a>
+  <ol>
+<li><a href="#c300"><b>300</b><span>1962–1981</span></a></li>
+  </ol>
+</nav>
+
+<main id="main">
+<section class="chapter" id="c300" data-nav="300" data-sub="1962–1981">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 1</p>
+    <h2><span class="speed">300<small>bits per second</small></span>Two whistles</h2>
+  </header>
+  <p>Stub.</p>
+  <figure class="player" id="p300" data-call="fsk300" data-variants='[{"label":"Bell 103 (North America)","options":{"plan":"bell103"}},{"label":"V.21 (rest of the world)","options":{"plan":"v21"}}]'>
+    <figcaption><span class="listen">Listen</span><h3>A 300 bit/s call, from answer to login</h3><p>Test.</p></figcaption>
+  
+  <div class="p-mount"><p class="p-nojs">The interactive player needs JavaScript. Everything it plays is described in words below.</p></div>
+  <div class="p-text">
+    <details class="steplist" open>
+      <summary>What you hear, step by step</summary>
+      <ol class="steps">
+      <li data-t="0.000">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="0" title="Play from here"><span class="step-time">0:00.0</span> <span class="step-title">The line connects</span></button>
+          <span class="origin era-net">Telephone network</span>
+        </div>
+        <p>The answering modem has picked up. For about two seconds it says nothing at all. The pause keeps the tones from interfering with the telephone network’s own signalling as the call is set up.</p>
+      </li>
+      <li data-t="2.000">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="1" title="Play from here"><span class="step-time">0:02.0</span> <span class="step-title">The answerer’s carrier: 2225 Hz</span></button>
+          <span class="origin era-1960">Bell 103, c. 1962</span>
+        </div>
+        <p>The answering modem sends its “mark” tone, 2225 Hz, and simply holds it. On a Bell 103 this high whistle is the answer tone and the idle carrier in one. Nothing is being said yet; it means “I am here, and I am sending ones.”</p>
+      </li>
+      <li data-t="2.900">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="2" title="Play from here"><span class="step-time">0:02.9</span> <span class="step-title">The caller replies: 1270 Hz</span></button>
+          <span class="origin era-1960">Bell 103, c. 1962</span>
+        </div>
+        <p>The calling modem has heard the answerer and switches on its own mark tone, lower in pitch at 1270 Hz. Two steady tones, one from each end, each in its own slice of the voice band so they never collide. That is the entire handshake.</p>
+      </li>
+      <li data-t="3.500">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="3" title="Play from here"><span class="step-time">0:03.5</span> <span class="step-title">Connected: the host speaks</span></button>
+          <span class="origin era-1960">Bell 103, c. 1962</span>
+        </div>
+        <p>The host sends a prompt. Every time its tone dips from 2225 to 2025 Hz, that is a zero bit; back up is a one. Each character is ten of these: a start bit, eight data bits, a stop bit. At 300 bits per second that is 30 characters per second, about as fast as you can read.</p>
+      </li>
+      <li data-t="4.150">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="4" title="Play from here"><span class="step-time">0:04.1</span> <span class="step-title">You type; the host echoes</span></button>
+          <span class="origin era-1960">Bell 103, c. 1962</span>
+        </div>
+        <p>Now a person types G-U-E-S-T. Each keystroke is a brief warble in the caller’s lower tone, and a moment later the same warble comes back in the answerer’s higher tone: the host echoing the character so it appears on screen. Between keystrokes both tones hold steady. The line is never silent.</p>
+      </li>
+      </ol>
+    </details>
+    <details class="seglist">
+      <summary>Every signal in this recording, and how faithful each one is</summary>
+      <p class="seg-intro">Synthesized in your browser, 6.8 seconds. By duration of signal, 100% follows the cited standard and 0% is a labeled approximation. Hover or focus a row’s “Basis” for the clause it comes from.</p>
+      <div class="seglist-body table-scroll">
+      <table>
+        <thead><tr><th scope="col">Starts</th><th scope="col">Lasts</th><th scope="col">Sent by</th><th scope="col">Signal</th><th scope="col">Fidelity</th><th scope="col">Basis</th></tr></thead>
+        <tbody>
+        <tr class="f-nominal">
+          <td>0:00.0</td>
+          <td>2000 ms</td>
+          <td>Answering modem</td>
+          <th scope="row">Silence</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>Answering data sets wait before sending carrier; two seconds is typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.0</td>
+          <td>1500 ms</td>
+          <td>Answering modem</td>
+          <th scope="row">Mark 2225 Hz</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>Frequencies per the standard. When each modem starts depends on its carrier-detect timers; these delays are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.9</td>
+          <td>600 ms</td>
+          <td>Calling modem</td>
+          <th scope="row">Mark 1270 Hz</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>Frequencies per the standard. When each modem starts depends on its carrier-detect timers; these delays are typical.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:03.5</td>
+          <td>3020 ms</td>
+          <td>Answering modem</td>
+          <th scope="row">Data: host</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Continuous-phase FSK at 300 baud: 1 = 2225 Hz, 0 = 2025 Hz, one start bit, eight data bits, one stop bit. The text is our example; character timing is snapped to the bit clock.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:03.5</td>
+          <td>3020 ms</td>
+          <td>Calling modem</td>
+          <th scope="row">Data: you</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Continuous-phase FSK at 300 baud: 1 = 1270 Hz, 0 = 1070 Hz, one start bit, eight data bits, one stop bit. The text is our example; character timing is snapped to the bit clock.</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+  </div>
+</figure>
+  <figure class="player" id="p56" data-call="v90" data-options='{}'>
+    <figcaption><span class="listen">Listen</span><h3>V.90</h3><p>Test.</p></figcaption>
+  
+  <div class="p-mount"><p class="p-nojs">The interactive player needs JavaScript. Everything it plays is described in words below.</p></div>
+  <div class="p-text">
+    <details class="steplist" open>
+      <summary>What you hear, step by step</summary>
+      <ol class="steps">
+      <li data-t="0.300">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="0" title="Play from here"><span class="step-time">0:00.3</span> <span class="step-title">Dial tone</span></button>
+          <span class="origin era-net">Telephone network</span>
+        </div>
+        <p>The modem takes the phone off the hook, exactly as you would, and waits for the exchange to offer dial tone: 350 Hz and 440 Hz sounding together.</p>
+      </li>
+      <li data-t="1.400">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="1" title="Play from here"><span class="step-time">0:01.4</span> <span class="step-title">Tone dialling</span></button>
+          <span class="origin era-1960">Touch-Tone, 1963</span>
+        </div>
+        <p>Each digit of 555-0142 is a pair of tones, one from a low group and one from a high group, so that speech is unlikely to imitate it. This is the same Touch-Tone signalling a telephone keypad sends.</p>
+      </li>
+      <li data-t="3.630">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="2" title="Play from here"><span class="step-time">0:03.6</span> <span class="step-title">Ringing</span></button>
+          <span class="origin era-net">Telephone network</span>
+        </div>
+        <p>The network rings the far end and plays ringback so the caller knows it is trying: 440 Hz and 480 Hz, two seconds on, four seconds off.</p>
+      </li>
+      <li data-t="6.530">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="3" title="Play from here"><span class="step-time">0:06.5</span> <span class="step-title">The line connects</span></button>
+          <span class="origin era-1960">V.25, 1968</span>
+        </div>
+        <p>The answering modem picks up and waits a moment before speaking.</p>
+      </li>
+      <li data-t="6.980">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="4" title="Play from here"><span class="step-time">0:07.0</span> <span class="step-title">A two-note question</span></button>
+          <span class="origin era-1994">V.8 bis, 1996</span>
+        </div>
+        <p>First, a quiet two-note chirp that many people remember as the very start of the sound. It is a newer, optional greeting called V.8 bis, asking “do you speak any of the extended languages?” Our caller does not answer it, which is allowed, so the server moves on.</p>
+      </li>
+      <li data-t="8.680">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="5" title="Play from here"><span class="step-time">0:08.7</span> <span class="step-title">Answer tone, now with a wobble</span></button>
+          <span class="origin era-1994">V.8, 1994</span>
+        </div>
+        <p>The 2100 Hz answer tone again, with its echo-canceller-defeating ticks every 450 ms. But now it also quivers, its loudness rising and falling fifteen times a second. That flutter is a flag to the caller: “I am a modern modem and I can negotiate. Send me your menu.” An old modem ignores the flutter and hears a plain answer tone.</p>
+      </li>
+      <li data-t="10.280">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="6" title="Play from here"><span class="step-time">0:10.3</span> <span class="step-title">The menus, in 300-baud</span></button>
+          <span class="origin era-1960">V.21, 1964</span>
+        </div>
+        <p>The caller sends its “call menu”: a short list of every modulation it can do, including a flag for 56k, repeated over and over. It is sent with the oldest modem signalling there is, the 300 bit/s two-tone warble of V.21, because every modem ever made can produce and understand it. The answerer replies in the upper tone pair with the “joint menu”: the items they have in common.</p>
+      </li>
+      <li data-t="11.688">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="7" title="Play from here"><span class="step-time">0:11.7</span> <span class="step-title">Introductions at 600 bit/s</span></button>
+          <span class="origin era-1994">V.34, 1994</span>
+        </div>
+        <p>A short, slow burst from each side: “here is what my transmitter can do.” The server speaks on 1200 Hz and Your modem on 2400 Hz, using the simple phase-flipping of the 1200 bit/s era at half its speed, because nothing has been measured yet and it has to work on any line.</p>
+      </li>
+      <li data-t="11.795">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="8" title="Play from here"><span class="step-time">0:11.8</span> <span class="step-title">Ranging: two tones and a flip</span></button>
+          <span class="origin era-1984">V.32, 1984</span>
+        </div>
+        <p>Each modem settles on a steady tone, 1200 Hz against 2400 Hz. One flips its tone upside down; exactly 40 ms after hearing that, the other flips back. Subtract the 40 ms and what is left is the round-trip time of the line, the same sonar trick as 9600, done more precisely.</p>
+      </li>
+      <li data-t="11.947">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="9" title="Play from here"><span class="step-time">0:11.9</span> <span class="step-title">Your modem probes the line</span></button>
+          <span class="origin era-1994">V.34, 1994</span>
+        </div>
+        <p>This harsh buzz is the heart of V.34. It is 21 pure tones sounded at once, from 150 Hz to 3750 Hz, loud for a sixth of a second and then softer. The other modem measures how strongly each tone arrives and how much noise sits between them. Four tones are deliberately missing so the receiver can hear distortion the line adds in those gaps. The result is a map of this exact phone line.</p>
+      </li>
+      <li data-t="12.550">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="10" title="Play from here"><span class="step-time">0:12.6</span> <span class="step-title">The server probes back</span></button>
+          <span class="origin era-1994">V.34, 1994</span>
+        </div>
+        <p>The same 21-tone chord in the other direction. A phone line is not the same in both directions, so each modem has to measure for itself.</p>
+      </li>
+      <li data-t="13.162">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="11" title="Play from here"><span class="step-time">0:13.2</span> <span class="step-title">Comparing notes</span></button>
+          <span class="origin era-1994">V.34, 1994</span>
+        </div>
+        <p>Each modem tells the other what it found: for each of six possible symbol rates, how fast it thinks it could go. Then they pick a symbol rate and a carrier frequency to suit this line, instead of the one-size-fits-all 2400 baud of every earlier fast modem.</p>
+      </li>
+      <li data-t="13.538">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="12" title="Play from here"><span class="step-time">0:13.5</span> <span class="step-title">Your modem trains the server</span></button>
+          <span class="origin era-1994">V.34, 1994</span>
+        </div>
+        <p>Your modem goes first, with exactly the signals a V.34 modem uses: a rasp, a short sweep, then hiss at 3200 symbols per second. Everything your modem sends in this call is V.34. Only the other direction is new.</p>
+      </li>
+      <li data-t="14.273">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="13" title="Play from here"><span class="step-time">0:14.3</span> <span class="step-title">A shopping list</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>Still in V.34’s voice, your modem sends a long list of instructions: which of the telephone network’s 255 voltage levels it wants to be shown, in what order, and for how long.</p>
+      </li>
+      <li data-t="14.493">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="14" title="Play from here"><span class="step-time">0:14.5</span> <span class="step-title">The server’s first digital sound</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>Now something no earlier modem could do. The server is not generating a waveform at all. It is writing numbers, 8000 of them a second, straight into the telephone network’s digital stream, and the phone company’s own equipment near your house turns each number into a voltage. First a harsh buzz to mark time, then a hiss made of just two voltages, one positive and one negative.</p>
+      </li>
+      <li data-t="14.922">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="15" title="Play from here"><span class="step-time">0:14.9</span> <span class="step-title">What the server offers</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>The server lists the downstream speeds it supports, from 28,000 to 56,000 bits per second, encoded as nothing more than the plus or minus sign of that same single voltage.</p>
+      </li>
+      <li data-t="15.005">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="16" title="Play from here"><span class="step-time">0:15.0</span> <span class="step-title">Digital impairment learning</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>The server plays the shopping list back: one voltage level after another, each compared against a reference. Your modem measures what actually arrives. This is how it discovers what the network between you does to those numbers, such as bits stolen for signalling or levels quietly remapped by a volume adjustment, and which of the 255 levels are still far enough apart to tell from one another on your line.</p>
+      </li>
+      <li data-t="16.418">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="17" title="Play from here"><span class="step-time">0:16.4</span> <span class="step-title">Agreeing on the constellation</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>Your modem now tells the server exactly which levels to use, which is the whole secret of your connect speed, and the two exchange final parameters. A quieter line means more usable levels.</p>
+      </li>
+      <li data-t="16.934">
+        <div class="step-head">
+          <button type="button" class="step-go" data-step="18" title="Play from here"><span class="step-time">0:16.9</span> <span class="step-title">Connected</span></button>
+          <span class="origin era-1998">V.90, 1998</span>
+        </div>
+        <p>Downstream at 49,333 bit/s: 8000 times a second the server picks one of about 72 voltage levels. Upstream, your modem replies with ordinary V.34 at 28,800 bit/s. The speaker clicks off. Everything you just heard took well under half a minute, and in it you can hear forty years of modems: Touch-Tone, the 2100 Hz answer tone, 300-baud warbles, the ranging tones of 9600, the probing chord of 28.8, and at the very end something new.</p>
+      </li>
+      </ol>
+    </details>
+    <details class="seglist">
+      <summary>Every signal in this recording, and how faithful each one is</summary>
+      <p class="seg-intro">Synthesized in your browser, 19.4 seconds. By duration of signal, 68% follows the cited standard and 32% is a labeled approximation. Hover or focus a row’s “Basis” for the clause it comes from.</p>
+      <div class="seglist-body table-scroll">
+      <table>
+        <thead><tr><th scope="col">Starts</th><th scope="col">Lasts</th><th scope="col">Sent by</th><th scope="col">Signal</th><th scope="col">Fidelity</th><th scope="col">Basis</th></tr></thead>
+        <tbody>
+        <tr class="f-nominal">
+          <td>0:00.3</td>
+          <td>1100 ms</td>
+          <td>Telephone network</td>
+          <th scope="row">Dial tone</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>350 + 440 Hz (North American precise tone plan). Duration is however long the modem waits.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:01.4</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">5</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;5&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:01.6</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">5</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;5&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:01.8</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">5</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;5&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.0</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">0</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;0&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.2</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">1</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;1&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.4</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">4</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;4&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:02.5</td>
+          <td>95 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">2</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>DTMF &quot;2&quot; (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:03.6</td>
+          <td>2000 ms</td>
+          <td>Telephone network</td>
+          <th scope="row">Ringback</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>440 + 480 Hz, 2 s on / 4 s off (North American). The answering modem picks up after however many rings it is set to wait.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:06.5</td>
+          <td>450 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Silence</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 bis 10.2.2: at least 400 ms of silence before CRe.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:07.0</td>
+          <td>400 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">CRe 1375+2002</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 bis 7.1: capabilities request, segment 1. 1375 + 2002 Hz for 400 ms, sent 12 to 15 dB below normal level.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:07.4</td>
+          <td>100 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">400 Hz</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 bis 7.1: segment 2 of CRe, 400 Hz for 100 ms.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:07.5</td>
+          <td>1200 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Waiting</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>The answerer waits for a V.8 bis reply. How long before it gives up and sends ANSam is its own choice.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:08.7</td>
+          <td>2222 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">ANSam 2100 Hz</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.8 7.2: 2100 Hz, amplitude-modulated ±20% at 15 Hz, phase reversed every 450 ± 25 ms. Sent until two identical CM sequences have been received.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:08.7</td>
+          <td>600 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Detecting</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>Time for the caller to recognise ANSam; implementation-dependent.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:09.3</td>
+          <td>1000 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Silence (Te)</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 8.1.1: the caller stays silent for Te, at least 1 s when echo cancellers must be disabled.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:10.3</td>
+          <td>1333 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">CM … CJ</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 7.3: call menu on V.21’s low channel (980/1180 Hz), repeated until two identical JMs are received, then three zero octets (CJ). The octet values are per Tables 3 to 7; which capabilities to list is our example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:10.9</td>
+          <td>723 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">JM</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.8 7.4: joint menu on V.21’s high channel (1650/1850 Hz), repeated until CJ has been received.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.7</td>
+          <td>83 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">INFO0a</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>INFO0a: 49 bits at 600 bit/s, binary DPSK on 2400 Hz with an 1800 Hz guard tone, with CRC. Field values are a plausible example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.7</td>
+          <td>105 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">INFO0d</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>INFO0d: 62 bits at 600 bit/s, binary DPSK on 1200 Hz, with CRC. Field values are a plausible example.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:11.8</td>
+          <td>73 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Tone A</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.34 10.1.2: Tone A, 2400 Hz. Phase reversals are timed to the millisecond; the stretches between them depend on detection times.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:11.8</td>
+          <td>92 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Tone B</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.34 10.1.2: Tone B, 1200 Hz. Phase reversals are timed to the millisecond; the stretches between them depend on detection times.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.8</td>
+          <td>92 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Ā</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Tone A reversed, until 40 ± 1 ms after the Tone B reversal is received.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.9</td>
+          <td>10 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">B̄</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Tone B reversed, 40 ± 1 ms after the Tone A reversal is received; 10 ms more, then silence.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.9</td>
+          <td>10 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">A</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Tone A restored for 10 ms. The round trip has now been timed from both ends.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:11.9</td>
+          <td>160 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">L1</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.2.4: 21 tones 150 Hz apart, phases per Table 17, 160 ms at 6 dB above nominal level.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:12.1</td>
+          <td>392 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">L2</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>The same 21 tones at nominal level, for at most 550 ms plus the round-trip delay.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:12.5</td>
+          <td>132 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Tone B</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.34 10.1.2: Tone B, 1200 Hz. Phase reversals are timed to the millisecond; the stretches between them depend on detection times.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:12.5</td>
+          <td>50 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Tone A</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Tone A for 50 ms.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:12.5</td>
+          <td>10 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Ā</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Reversed for 10 ms, then silence.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:12.6</td>
+          <td>10 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">B̄</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Reversed 40 ± 1 ms after the Tone A reversal is received; 10 ms more, then the probe.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:12.6</td>
+          <td>160 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">L1</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.2.4: 160 ms at 6 dB above nominal level.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:12.8</td>
+          <td>392 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">L2</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>At nominal level, for at most 550 ms plus the round-trip delay.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:13.1</td>
+          <td>230 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Tone A</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.34 10.1.2: Tone A, 2400 Hz. Phase reversals are timed to the millisecond; the stretches between them depend on detection times.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:13.2</td>
+          <td>183 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">INFO1d</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>INFO1d: 109 bits carrying the probing results for each symbol rate. Field values are a plausible example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:13.4</td>
+          <td>118 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">INFO1a</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>INFO1a: 70 bits naming the symbol rate to use. Field values are a plausible example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:13.5</td>
+          <td>40 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.3.7: point 0 and its 90° rotation, alternating, for 128 symbols.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:13.6</td>
+          <td>5 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S̄</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>The same pattern rotated 180°, for 16 symbols. The flip is the timing mark.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:13.6</td>
+          <td>90 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">PP</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.3.6: six repeats of a 48-symbol sequence whose energy is spread perfectly evenly across the band, for fast equalizer training.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:13.7</td>
+          <td>600 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">TRN</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>1920 symbols of scrambled ones on four points. The standard requires at least 512; how many more is up to the modem.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:14.3</td>
+          <td>283 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Ja</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.90 8.3.1: the 1073-bit DIL descriptor, repeated until the server’s Sd flip is detected. The layout is per Table 12; the parameters in it are our example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:14.5</td>
+          <td>48 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Sd</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.90 8.4.4: 64 repeats of the six-sample pattern +W, +0, +W, −W, −0, −W, where W is the codeword 16 Ucodes above the training level.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:14.5</td>
+          <td>6 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">S̄d</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Eight repeats of the inverted pattern. The flip is the timing mark.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:14.5</td>
+          <td>375 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">TRN1d</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.90 8.4.5: one codeword (Ucode 79) whose sign is a scrambled string of ones, at 8000 samples per second. At least 2040 samples are required; 3000 are sent here.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:14.9</td>
+          <td>81 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Jd</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.90 8.4.2: a 72-bit frame listing the downstream speeds the server offers, sent as the sign of the training codeword and repeated until your modem replies.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:15.0</td>
+          <td>34 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.34 signal S, held until the server’s Jd′ is detected.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:15.0</td>
+          <td>2 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Jd′</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Twelve zero bits ending Jd.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:15.0</td>
+          <td>1414 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">DIL</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Structure per V.90 8.4.1: 145 segments of 78 samples, each exercising one mu-law codeword against a reference. Which codewords, in what order, with what signs and for how long is requested by the analogue modem and differed between manufacturers; this sequence is our own example.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:15.0</td>
+          <td>5 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S̄</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>The same pattern rotated 180°, for 16 symbols. The flip is the timing mark.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:15.0</td>
+          <td>1350 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">SCR</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.90 8.3.5: scrambled ones on four points, to keep the line alive while the DIL is studied.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:16.4</td>
+          <td>40 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.3.7: point 0 and its 90° rotation, alternating, for 128 symbols.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:16.4</td>
+          <td>5 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">S̄</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>The same pattern rotated 180°, for 16 symbols. The flip is the timing mark.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.4</td>
+          <td>128 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">CPt</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Correct V.34 four-point modulation and frame skeleton (sync, start bits, CRC), but the constellation tables inside are placeholder bits of representative length.</td>
+        </tr>
+        <tr class="f-nominal">
+          <td>0:16.4</td>
+          <td>71 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Ri</th>
+          <td><span class="badge f-nominal">Per the standard, timing typical</span></td>
+          <td>V.90 8.6.4: the training codeword with the sign pattern + + + − − −, repeated until a CPt frame has been received.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:16.5</td>
+          <td>3 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">R̄i</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>Four repeats of the inverted pattern.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.5</td>
+          <td>300 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">TRN2d</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Real mu-law codewords at 8000 per second and within the power limit, but chosen at random; the real signal is produced by V.90’s modulus encoder and spectral shaper from a constellation negotiated in CP. At least 2040 samples.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:16.5</td>
+          <td>226 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">SCR</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.90 9.4.2.2: scrambled ones, optional, for at most 4 s.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.8</td>
+          <td>64 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">CP</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Correct V.34 four-point modulation and frame skeleton (sync, start bits, CRC), but the constellation tables inside are placeholder bits of representative length.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.8</td>
+          <td>120 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">MP, MP′</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Real mu-law codewords at 8000 per second and within the power limit, but chosen at random; the real signal is produced by V.90’s modulus encoder and spectral shaper from a constellation negotiated in CP.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.8</td>
+          <td>64 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">CP′</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Correct V.34 four-point modulation and frame skeleton (sync, start bits, CRC), but the constellation tables inside are placeholder bits of representative length.</td>
+        </tr>
+        <tr class="f-spec">
+          <td>0:16.9</td>
+          <td>3 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">E</th>
+          <td><span class="badge f-spec">Per the standard</span></td>
+          <td>V.34 10.1.3.2: twenty scrambled ones marking the end of MP.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.9</td>
+          <td>40 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">B1</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Correct symbol rate, carrier, bandwidth and 896-point constellation, but the points are picked at random. Real V.34 picks them by shell mapping, a 4D trellis code and precoding, so this stretch is not a decodable data stream.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.9</td>
+          <td>2 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Ed</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Real mu-law codewords at 8000 per second and within the power limit, but chosen at random; the real signal is produced by V.90’s modulus encoder and spectral shaper from a constellation negotiated in CP.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.9</td>
+          <td>36 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">B1d</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Real mu-law codewords at 8000 per second and within the power limit, but chosen at random; the real signal is produced by V.90’s modulus encoder and spectral shaper from a constellation negotiated in CP. 48 data frames.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:16.9</td>
+          <td>2216 ms</td>
+          <td>Your modem (analogue)</td>
+          <th scope="row">Data 28.8k</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Correct symbol rate, carrier, bandwidth and 896-point constellation, but the points are picked at random. Real V.34 picks them by shell mapping, a 4D trellis code and precoding, so this stretch is not a decodable data stream.</td>
+        </tr>
+        <tr class="f-approx">
+          <td>0:17.0</td>
+          <td>2200 ms</td>
+          <td>ISP’s modem (digital)</td>
+          <th scope="row">Data 49k</th>
+          <td><span class="badge f-approx">Approximation</span></td>
+          <td>Approximation. Real mu-law codewords at 8000 per second and within the power limit, but chosen at random; the real signal is produced by V.90’s modulus encoder and spectral shaper from a constellation negotiated in CP. 36 levels of each sign, 37 bits per six samples.</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+  </div>
+</figure>
+</section>
+
+</main>
+
+<footer class="backmatter" id="sources">
+  <h2>Sources</h2>
+  <p>Numbers in the text point here. Technical values come from the standards themselves wherever a standard exists; history comes from primary accounts and contemporary reporting where we could find them. Where sources disagree, the text says so.</p>
+  <ol class="sources wide">
+
+  </ol>
+
+  <h2 id="credits">Image credits</h2>
+  <p>Third-party images are stored with this site, not hot-linked, and keep their own licenses. Each has been resized and recompressed; nothing else was altered unless noted.</p>
+  <ul class="credits">
+
+  </ul>
+
+  <h2 id="about">About this site</h2>
+  <p>Every sound on this page is generated in your browser, at the moment you press play, by code written from the published standards. There are no audio files. The <a href="https://github.com/ahknight/modems-fable">source</a> includes the synthesis code, the tests that decode its output, a development journal, and notes on every approximation and unresolved question.</p>
+  <p>Typeset in IBM Plex Serif and IBM Plex Mono (© IBM Corp., <a href="fonts/OFL.txt">SIL Open Font License 1.1</a>).</p>
+  <p class="fineprint">Original text, code-generated audio, diagrams and interactive elements © 2026, licensed <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Third-party images and quotations are excluded from that license and remain under the terms shown beside each. Trademarks belong to their owners. Built 2026-11-20.</p>
+</footer>
+</body>
+</html>

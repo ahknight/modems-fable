@@ -85,19 +85,20 @@ export function v22({ rate = 1200, answer = 'v25', guard = false, delay = 0.004 
   const fast = rate === 2400;
   const bell = answer === 'bell';
   const name = fast ? 'V.22 bis' : bell ? 'Bell 212A' : 'V.22';
+  const origin = fast ? 'V.22 bis, 1984' : bell ? 'Bell 212A, 1976' : 'V.22, 1980';
   const call = new Call({ id: `v22-${rate}-${answer}`, title: `${name}, ${rate} bit/s`, standard: name });
   const rt = 2 * delay;
 
   // -- Answer sequence ---------------------------------------------------------
   const silence = 2.15;
-  call.step(0, 'The line connects', 'The answering modem picks up and stays silent for about two seconds.', 'CCITT V.25');
+  call.step(0, 'The line connects', 'The answering modem picks up and stays silent for about two seconds.', 'V.25, 1968');
   call.mark(ANSWERER, 0, silence, 'Silence', 'spec', 'V.25 4.3: 1.8 to 2.5 s of silence after going off-hook.');
   let usb1At = silence;
   if (bell) {
-    call.step(silence, 'Answer tone: 2225 Hz', 'An American Bell 212A answers with the same 2225 Hz whistle as the 300 bit/s Bell 103 before it. An old 300-baud caller hears a familiar friend and connects the old way; a 1200 caller recognises it too, because it sits almost exactly where the new standard’s idle signal does.', 'Bell 103, 1962');
+    call.step(silence, 'Answer tone: 2225 Hz', 'An American Bell 212A answers with the same 2225 Hz whistle as the 300 bit/s Bell 103 before it. An old 300-baud caller hears a familiar friend and connects the old way; a 1200 caller recognises it too, because it sits almost exactly where the new standard’s idle signal does.', 'Bell 103, c. 1962');
   } else {
     const ans = 3.3;
-    call.step(silence, 'Answer tone: 2100 Hz', 'The international answer tone, unchanged from 300 baud. It announces a modem and switches off the telephone network’s echo suppressors.', 'CCITT V.25');
+    call.step(silence, 'Answer tone: 2100 Hz', 'The international answer tone, unchanged from 300 baud. It announces a modem and switches off the telephone network’s echo suppressors.', 'V.25, 1968');
     call.put(ANSWERER, silence, tone(2100, ans, { amp: AMP }), 'ANS 2100 Hz', 'spec', 'V.25: 2100 ± 15 Hz for 3.3 ± 0.7 s, then 75 ± 20 ms of silence.');
     usb1At = silence + ans + 0.075;
   }
@@ -169,17 +170,17 @@ export function v22({ rate = 1200, answer = 'v25', guard = false, delay = 0.004 
 
   // -- Narration ---------------------------------------------------------------
   if (!bell) {
-    call.step(usb1At, 'The answerer’s idle signal', 'After a 75 ms breath, the answering modem starts its real carrier at 2400 Hz and sends an endless string of ones. Because each pair of ones turns the carrier’s phase by the same quarter-turn 600 times a second, it sounds like a pure tone near 2250 Hz.', name);
+    call.step(usb1At, 'The answerer’s idle signal', 'After a 75 ms breath, the answering modem starts its real carrier at 2400 Hz and sends an endless string of ones. Because each pair of ones turns the carrier’s phase by the same quarter-turn 600 times a second, it sounds like a pure tone near 2250 Hz.', origin);
   }
   if (fast) {
     call.step(callerStart, 'The secret knock: S1', 'For a tenth of a second the caller sends a special rattling pattern called S1. An older 1200 bit/s modem ignores it. A 2400 bit/s modem recognises it and sends the same knock back. That one exchange is how the two modems discover that they can both go faster.', 'V.22 bis, 1984');
     call.step(answererScrambled, 'Scrambled ones at 1200', 'Both modems now send scrambled ones at the old speed, and both sound like a rushing hiss in their own halves of the band: the caller centred on 1200 Hz, the answerer on 2400 Hz. They are giving each other something busy to lock on to.', 'V.22, 1980');
     call.step(answererFastAt, 'Shift up to 2400', 'Exactly 600 ms after the knock, each modem shifts up. The symbol rate and the pitch do not change, so you can barely hear it. What changes is that each symbol now lands on one of sixteen points instead of four, carrying four bits instead of two.', 'V.22 bis, 1984');
   } else {
-    call.step(callerStart, 'The caller’s scrambled reply', 'The caller answers on 1200 Hz, and it does not sound like a tone at all. A scrambler has stirred its string of ones into a pseudo-random pattern, so the phase jumps unpredictably and the energy spreads into a rough hiss. That is deliberate: a busy signal is easier for the far end to lock on to than a pure tone.', name);
-    call.step(answererScrambled, 'Both ends scrambled', 'The answerer has recognised the caller and switches its own ones to scrambled. Now there are two bands of hiss, low and high. Each modem counts off 765 ms to let the other settle.', name);
+    call.step(callerStart, 'The caller’s scrambled reply', 'The caller answers on 1200 Hz, and it does not sound like a tone at all. A scrambler has stirred its string of ones into a pseudo-random pattern, so the phase jumps unpredictably and the energy spreads into a rough hiss. That is deliberate: a busy signal is easier for the far end to lock on to than a pure tone.', origin);
+    call.step(answererScrambled, 'Both ends scrambled', 'The answerer has recognised the caller and switches its own ones to scrambled. Now there are two bands of hiss, low and high. Each modem counts off 765 ms to let the other settle.', origin);
   }
-  call.step(Math.min(callerData, answererData), 'Data', `Connected at ${rate} bit/s. The sound does not change when real data starts flowing, and that is the point: the scrambler makes a login prompt sound exactly like idle. From here on, a modem’s song is noise to human ears.`, name);
+  call.step(Math.min(callerData, answererData), 'Data', `Connected at ${rate} bit/s. The sound does not change when real data starts flowing, and that is the point: the scrambler makes a login prompt sound exactly like idle. From here on, a modem’s song is noise to human ears.`, origin);
   call.end = end;
   return call.finish();
 }

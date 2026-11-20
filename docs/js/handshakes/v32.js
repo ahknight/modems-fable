@@ -177,9 +177,9 @@ export function v32({ rate = 9600, roundTrip = 28 } = {}) {
   const ansLength = 3.3;
   const reversals = [];
   for (let t = 0.45; t < ansLength; t += 0.45) reversals.push(t);
-  call.step(0, 'The line connects', 'The answering modem picks up, and for two seconds nothing happens, exactly as at 300 and 1200. The opening of the call has not changed.', 'CCITT V.25');
+  call.step(0, 'The line connects', 'The answering modem picks up, and for two seconds nothing happens, exactly as at 300 and 1200. The opening of the call has not changed.', 'V.25, 1968');
   call.mark(ANSWERER, 0, silence, 'Silence', 'spec', 'V.25 4.3: 1.8 to 2.5 s of silence after going off-hook.');
-  call.step(silence, 'Answer tone, with a hiccup', 'The familiar 2100 Hz answer tone, but listen for a tiny tick every 450 ms. Each tick is the tone flipping upside down. Flipped tone is the agreed signal for the telephone network’s echo cancellers to stand down, because these modems are about to cancel echo themselves.', 'CCITT V.25');
+  call.step(silence, 'Answer tone, with a hiccup', 'The familiar 2100 Hz answer tone, but listen for a tiny tick every 450 ms. Each tick is the tone flipping upside down. Flipped tone is the agreed signal for the telephone network’s echo cancellers to stand down, because these modems are about to cancel echo themselves.', 'V.25, 1968');
   call.put(ANSWERER, silence, tone(2100, ansLength, { amp: AMP, reversals }), 'ANS 2100 Hz ⟲', 'spec', 'V.25: 2100 Hz for 3.3 ± 0.7 s with 180° phase reversals every 450 ± 25 ms, then 75 ± 20 ms of silence.');
 
   // -- Ranging: AA/CC against AC/CA/AC (V.32 5.4) --------------------------------
@@ -262,7 +262,7 @@ export function v32({ rate = 9600, roundTrip = 28 } = {}) {
   };
   fill(ans2, '\r\nWELCOME TO THE SYSTEM\r\nLOGIN: ');
   fill(call2, 'GUEST\r');
-  call.step(dataAt - 136 * T, 'Data', `Connected at ${rate.toLocaleString('en-US')} bit/s. Every 1/2400 of a second each modem sends one of ${bis ? 128 : 32} possible symbols. ${bis ? 'More points, packed closer together, on the same 2400 symbols per second: that is the whole difference between 9600 and 14,400.' : 'Only sixteen of those would be needed to carry four bits. The other sixteen are deliberate redundancy, the trellis code, which lets the receiver correct its own mistakes.'}`, name);
+  call.step(dataAt - 136 * T, 'Data', `Connected at ${rate.toLocaleString('en-US')} bit/s. Every 1/2400 of a second each modem sends one of ${bis ? 128 : 32} possible symbols. ${bis ? 'More points, packed closer together, on the same 2400 symbols per second: that is the whole difference between 9600 and 14,400.' : 'Only sixteen of those would be needed to carry four bits. The other sixteen are deliberate redundancy, the trellis code, which lets the receiver correct its own mistakes.'}`, bis ? 'V.32 bis, 1991' : 'V.32, 1984');
   call.end = end;
   return call.finish();
 }
