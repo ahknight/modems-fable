@@ -150,8 +150,8 @@ export function v22({ rate = 1200, answer = 'v25', guard = false, delay = 0.004 
   ansTx.data(pad(asyncText(banner), end - answererData), fast, dataNote);
   ansTx.burst.emit();
   if (guard) {
-    call.put(ANSWERER, ansTx.burst.t0, tone(1800, end - ansTx.burst.t0, { amp: AMP / 2 }), '', 'spec');
-    call.mark(ANSWERER, ansTx.burst.t0, end, 'Guard 1800 Hz', 'spec', 'V.22 2.1: optional 1800 Hz guard tone, 6 dB below the data, sent only by the answering modem.');
+    // V.22 2.1: optional 1800 Hz guard tone, 6 dB below the data, sent only by the answering modem.
+    call.lines[ANSWERER].add(ansTx.burst.t0, tone(1800, end - ansTx.burst.t0, { amp: AMP / 2 }));
   }
 
   // -- Calling modem's transmission ---------------------------------------------

@@ -4,14 +4,18 @@
 //
 // All times are seconds as heard at the calling modem's end of the line.
 
-import { Line, SR, mix, normalize, qam, tone } from '../dsp/core.js';
+import { Line, SR, mix, qam, tone } from '../dsp/core.js';
 
 export const CALLER = 0;
 export const ANSWERER = 1;
 export const NETWORK = 2;
 
-/** Sine amplitude for the nominal transmit level (0.2 RMS leaves headroom for two talkers). */
-export const AMP = 0.2 * Math.SQRT2;
+/**
+ * Sine amplitude for the nominal transmit level: 0.15 RMS. Two modems talking
+ * at once, plus the 6 dB boost of the V.34 probe and the loudest V.90 training
+ * levels, must still sum to less than full scale (the test-suite checks).
+ */
+export const AMP = 0.15 * Math.SQRT2;
 
 /**
  * How faithful a segment is. Shown as a badge on every timeline block.
@@ -30,6 +34,7 @@ export class Call {
     this.steps = [];
     this.symbolTracks = [];
     this.bitTracks = [];
+    this.pcmTracks = [];
     this.end = 0;
   }
 
@@ -64,6 +69,7 @@ export class Call {
       steps: this.steps,
       symbolTracks: this.symbolTracks,
       bitTracks: this.bitTracks,
+      pcmTracks: this.pcmTracks,
     };
   }
 }
@@ -86,13 +92,6 @@ export class Burst {
   /** Time at which the next symbol would start. */
   get time() {
     return this.t0 + this.count / this.symRate;
-  }
-
-  /** The most recent point, in the units of the section that produced it. */
-  get last() {
-    const section = this.sections.at(-1);
-    const n = this.points.length;
-    return [this.points[n - 2] / section.scale, this.points[n - 1] / section.scale];
   }
 
   /**
@@ -174,5 +173,3 @@ export function dialPreamble(call, { digits = '5550142', t = 0.3 } = {}) {
   call.put(NETWORK, t, mix(tone(440, 2, { amp: AMP * 0.4, ramp: 0.01 }), tone(480, 2, { amp: AMP * 0.4, ramp: 0.01 })), 'Ringback', 'nominal', '440 + 480 Hz, 2 s on / 4 s off (North American). The answering modem picks up after however many rings it is set to wait.');
   return t + 2.9;
 }
-
-export { normalize };
