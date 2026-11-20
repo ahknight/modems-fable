@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+# ITU recommendations are copyrighted; fetch them with tools/fetch-specs.sh instead.
+research/specs/
+# Unprocessed third-party originals; the processed copies in docs/media are what ships.
+research/media/*
+!research/media/MANIFEST.md
+test-results/
