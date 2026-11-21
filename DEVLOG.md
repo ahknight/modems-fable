@@ -211,3 +211,24 @@ Unresolved (also in `notes/testing.md` and `notes/fidelity.md`):
 6. The spectrogram cannot be zoomed; dense stretches of the 56k call are cramped.
 7. Not tested: shipping Safari/Firefox/Chrome applications, mobile, screen readers,
    the deployed GitHub Pages URL.
+
+### 18:15 CST — Correction: the times in this journal
+
+The section headings above carry clock times that I wrote without checking the
+clock. Most are wrong, and the header says "US Pacific" when this machine is on US
+Central time. Because this file is append-only I am correcting the record here
+instead of editing the headings. The order of the entries is right; the times are not.
+
+What the clock and `git log` actually say for 2026-11-20 (CST):
+
+| Time | Event |
+| --- | --- |
+| about 16:00 | Session start; research agents launched; ITU specifications downloaded |
+| 17:16 | Commit `b788acf`: DSP core, 300/1200/2400 synthesis, first signal tests |
+| 17:30 | Commit `385a627`: V.32, V.8, V.34, V.90 synthesis; four research sheets in |
+| 17:39 | Commit `daafd62`: player, lens, build pipeline, stylesheet |
+| 18:03 | Commit `d714fb2`: all chapters, citations, widgets, three-engine browser tests |
+| 18:12 | Commit `f889ead`: images, notes, README, LICENSE |
+
+So the whole of "session 1" took a little over two hours, not the seven the headings
+imply. Future entries will take their time from `date`.
