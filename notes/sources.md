@@ -30,6 +30,30 @@ of things cut for want of a source: "kitchen table" (every source says dining ro
 role in packet switching; the expansion of "LPB/HPB"; "53.3k" as the U.S. cap (sources
 say 53k or 54k); the reason for V.22's guard tone (kept, explicitly marked as untraced).
 
+### Independent fact-check
+
+After the chapters were written, a separate agent with no part in writing them compared
+every cited sentence, quotation and caption against the fact sheets and reported 28
+findings: no misattributed quotation and no missing citation key, but seven quotation
+wordings to tighten, six wrong or unsupported specifics, three citations pointing at
+the wrong source, and eleven over-claims. All were acted on. The most serious:
+
+- The prologue told readers that the Bell 103's four frequencies "will still be on the
+  line in 1998". They are not; the 56k handshake's 300 bit/s exchange uses V.21's.
+- "In stores on February 24, 1997" for x2 modems; the source says shipped that day.
+- "Three inventions, each about fifteen years old" at 9600; they date from 1965–66,
+  1966 and 1976.
+- Bell 212A behavior was stated as fact. It is now presented as an inference from
+  V.22's note, and the chapter says Bell's specification was not found.
+- "The first dial-up bulletin board", "invented to hide the modem", "how nearly every
+  online game has worked since", and several lineage claims in the epilogue were
+  stronger than the sources. They are now hedged or cut.
+
+The checker also flagged dates it could not find in the fact sheets that come from
+documents read directly for the synthesis (V.21: Geneva, 1964; V.25: Mar del Plata,
+1968; the wording of V.22's 2225 Hz note). Those were re-confirmed against the ITU
+texts and kept.
+
 ### Caveats that a careful reader should know
 
 - **Most historical sources were not re-opened when the prose was written.** The

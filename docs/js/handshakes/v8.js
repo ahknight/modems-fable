@@ -119,7 +119,7 @@ export function v8(call, { t = 0, rt, pcm = false, v8bis = false }) {
     call.put(who, at, fsk(track.bits, { baud: 300, ...freqs, amp: AMP }), label, 'spec', note);
     call.bitTracks.push({ who, t0: at, baud: 300, bits: track.bits, chars: track.frames, wide: true, ...freqs });
   };
-  call.step(cmAt, 'The menus, in 300-baud', `The caller sends its “call menu”: a short list of every modulation it can do${pcm ? ', including a flag for 56k' : ''}, repeated over and over. It is sent with the oldest modem signalling there is, the 300 bit/s two-tone warble of V.21, because every modem ever made can produce and understand it. The answerer replies in the upper tone pair with the “joint menu”: the items they have in common.`, 'V.21, 1964');
+  call.step(cmAt, 'The menus, in 300-baud', `The caller sends its “call menu”: a short list of every modulation it can do${pcm ? ', including a flag for 56k' : ''}, repeated over and over. It is sent in V.21, the 300 bit/s two-tone warble: the oldest and simplest signaling in the international rulebook, and so the safest common language. The answerer replies in the upper tone pair with the “joint menu”: the items they have in common.`, 'V.21, 1964');
   send(CALLER, cmAt, cmTrack, v21.caller, 'CM … CJ', 'V.8 7.3: call menu on V.21’s low channel (980/1180 Hz), repeated until two identical JMs are received, then three zero octets (CJ). The octet values are per Tables 3 to 7; which capabilities to list is our example.');
   send(ANSWERER, jmAt, jmTrack, v21.answerer, 'JM', 'V.8 7.4: joint menu on V.21’s high channel (1650/1850 Hz), repeated until CJ has been received.');
   return { sigC: cjEnd + 0.075, sigA: jmEnd + 0.075, cjEnd, jmEnd };

@@ -95,7 +95,7 @@ export function v22({ rate = 1200, answer = 'v25', guard = false, delay = 0.004 
   call.mark(ANSWERER, 0, silence, 'Silence', 'spec', 'V.25 4.3: 1.8 to 2.5 s of silence after going off-hook.');
   let usb1At = silence;
   if (bell) {
-    call.step(silence, 'Answer tone: 2225 Hz', 'An American Bell 212A answers with the same 2225 Hz whistle as the 300 bit/s Bell 103 before it. An old 300-baud caller hears a familiar friend and connects the old way; a 1200 caller recognizes it too, because it sits almost exactly where the new standard’s idle signal does.', 'Bell 103, c. 1962');
+    call.step(silence, 'Answer tone: 2225 Hz', 'V.22 notes that some modems answer with a 2225 Hz tone here, the whistle of the 300 bit/s Bell 103; the Bell 212A, which had a 103 built in, is the obvious case. An old 300-baud caller hears a familiar friend and connects the old way; a 1200 caller accepts it too, because it sits almost exactly where the new standard’s idle signal does.', 'Bell 103, c. 1962');
   } else {
     const ans = 3.3;
     call.step(silence, 'Answer tone: 2100 Hz', 'The international answer tone, unchanged from 300 baud. It announces a modem and switches off the telephone network’s echo suppressors.', 'V.25, 1968');

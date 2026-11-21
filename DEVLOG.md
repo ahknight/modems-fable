@@ -244,3 +244,28 @@ imply. Future entries will take their time from `date`.
   unreadable (hover background with selected text color).
 - Browser suite re-run, with a new zoom check: Chromium, Firefox, WebKit all pass.
 - An independent fact-check of the prose against the research sheets is running.
+
+### 18:24 CST — Independent fact-check, and corrections
+
+A separate agent, given only the published prose, the citation registry and the
+research sheets, was asked to find anything the prose says that the research does not
+support. It reported 28 findings (no misattributed quotes, no missing keys; 7 quote
+wordings, 6 wrong or unsupported specifics, 3 mis-pointed citations, 11 over-claims).
+All were acted on; `notes/sources.md` lists the serious ones.
+
+The worst was mine and structural: the prologue promised that the Bell 103's four
+frequencies "will still be on the line in 1998". They are not. The 300 bit/s exchange
+inside a 56k handshake is V.21, whose tones differ, as chapter 1 itself says.
+
+Also corrected: x2 modems *shipped* (not "in stores") on 1997-02-24; the three V.32
+inventions date from the 1960s and 1976, not "about fifteen years" before; Bell 212A
+behavior is now presented as an inference from the note in V.22, with a statement
+that Bell's own specification was not found; several "first" and "ever since" claims
+were cut.
+
+Three flagged items were kept after re-checking the ITU texts directly: V.21 dates
+from Geneva 1964, V.25 from Mar del Plata 1968, and the 2225 Hz note is quoted
+verbatim from V.22.
+
+Re-run after the edits: 21 signal tests pass; browser suite passes in Chromium,
+Firefox and WebKit.
