@@ -1,13 +1,79 @@
-<section class="chapter" id="c300" data-nav="300" data-sub="1962–1981">
+<section class="chapter" id="c300" data-nav="300" data-sub="1976–1981">
   <header class="chapter-head">
-    <p class="kicker">Chapter 1</p>
+    <p class="kicker">Chapter 1 · The first modems of your own</p>
     <h2><span class="speed">300<small>bits per second</small></span>Two whistles</h2>
+    <p class="dek">A kit you could solder for under $100, a circuit board assembled on a dining-room table in Georgia, and a handshake so simple it barely deserves the name.</p>
+    <dl class="facts">
+      <div><dt>Standards</dt><dd>Bell 103 <small>North America, early 1960s</small></dd><dd>V.21 <small>CCITT, 1964</small></dd></div>
+      <div><dt>How bits become sound</dt><dd>FSK <small>one of two tones per direction</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>300 baud</dd></div>
+      <div><dt>Bits per symbol</dt><dd>1</dd></div>
+      <div><dt>Characters per second</dt><dd>30 <small>ten bits per character</small></dd></div>
+      <div><dt>What it cost at home</dt><dd>$97.50 kit <small>1976</small></dd><dd>$279 <small>Smartmodem, 1981</small></dd></div>
+    </dl>
   </header>
-  <p>Stub.</p>
+
+  <h3>The Pennywhistle</h3>
+  <p>Lee Felsenstein needed a modem in 1973 for Community Memory, a public computer terminal in a Berkeley record store that reached its mainframe in San Francisco over a telephone line. The commercial unit he had been using cost about $300 and, he recalled, “was good for 300 baud under the most favorable circumstances”{{cite felsenstein-ae-1995}}. So he designed his own{{cite felsenstein-chm-oral}}.</p>
+  <p>Modems of the time needed careful calibration, because the receiver had to decide which of two close-together tones it was hearing, and component values drift. Felsenstein’s trick was to stop measuring against a fixed reference. In ordinary typed data, the line returns to the “1” tone between every character; his receiver simply re-learned what “1” looked like each time it saw one{{cite pe-pennywhistle}}. The result was tolerant enough to work from a cassette recording played at slightly the wrong speed, and tolerant enough that an amateur could build it.</p>
+
+  <blockquote class="pull">
+    <p>“It was designed not only to be buildable as a kit, which was something you weren’t supposed to be able to do with modems because of all the critical adjustments.”</p>
+    <footer>Lee Felsenstein, Computer History Museum oral history, 2008{{cite felsenstein-chm-oral}}</footer>
+  </blockquote>
+
+  <p>It was published as the cover project of <cite>Popular Electronics</cite> in March 1976 under the name <strong>Pennywhistle</strong>, with a complete kit offered at $97.50{{cite pe-pennywhistle}}. It was an acoustic coupler, for exactly the reason the prologue describes: as the article put it, couplers “obviate the need for the user to pay installation and rental charges for the devices the telephone company requires for direct-line hookups”{{cite pe-pennywhistle}}. Felsenstein later said it “knocked modem prices down from $350 to $100”{{cite felsenstein-chm-oral}}. That is his own characterization, and we found no independent price survey, but a year and a half later the kit was still being advertised, at $129.95, as “the first professional quality modem available in kit form”{{cite byte-1977-09-mr-ad}}.</p>
+
+  <h3>The board from the dining room</h3>
+  <p>In Atlanta, two engineers at National Data Corporation, Dennis Hayes and Dale Heatherington, pooled their money for an IMSAI 8080 computer kit and, once it worked, designed a modem to go inside it{{cite softalk-1981 heatherington-bio}}. The <strong>80-103A</strong> was a circuit board for the S-100 bus that the first hobby computers shared. First deliveries were in April 1977; assembled and tested it cost $279.95, and you could have the bare board for $49.95{{cite softalk-1981 byte-1977-08-hayes}}. Hayes’s house was the factory.</p>
+
+  <blockquote class="pull">
+    <p>“A couple of assemblers were hired and fully assembled units were built on Dennis’ [dining] room table. Dale would drop by after work at National Data and pick up modems to take home and test that night.”</p>
+    <footer>Dale Heatherington, writing about himself in the third person, 2007{{cite heatherington-bio}}</footer>
+  </blockquote>
+
+  <p>What made it different was not the signaling, which was plain Bell 103. It was that the modem lived <em>inside</em> the computer, where software could reach it. A program could tell the board to dial a number, or to answer the phone when it rang, with no human touching a handset{{cite byte-1977-08-hayes}}. It still needed the phone company’s rented coupler to be legal{{cite hayes-80103a-manual}}. The Micromodem II for the Apple II, on dealers’ shelves by 1979, solved that by shipping with its own FCC-registered line interface{{cite byte-1979-10-hayes-ad}}. And in the spring of 1981 came a box that sat <em>outside</em> any computer with a serial port, plugged directly into a modular phone jack, and took its orders as typed text: the Smartmodem, $279{{cite softalk-1981 byte-1981-05-smartmodem-ad}}. Its command language outlived every modem in this story; see the sidebar below.</p>
+
+  <p>A programmable modem changes what a computer is for. In Chicago, Ward Christensen and Randy Suess put a Hayes board in a homemade machine in January 1978, and a month later it was answering the phone by itself: the first dial-up bulletin board system{{cite byte-1978-11-cbbs}}.</p>
+
+  <h3>How 300 bits per second works</h3>
+  <p>The scheme is called <strong>frequency-shift keying</strong>, and it is the simplest idea in this whole history: to send a 1, whistle one note; to send a 0, whistle another. Bell 103’s caller uses 1,270 and 1,070 Hz, its answerer 2,225 and 2,025 Hz{{cite pe-pennywhistle}}. Each bit lasts one three-hundredth of a second. A typed character is sent as ten of them: a 0 to announce that a character is starting, eight data bits, and a 1 to finish. That makes 30 characters a second, close to the speed at which many people read.</p>
+  <p>The handshake is almost nothing. The answering modem picks up, waits, and switches on its “1” tone. The caller hears it and switches on its own “1” tone. Each now knows the other is there. That is all. There is nothing to negotiate, because there is only one speed and one way of doing things, and nothing to measure, because the signal is so slow and so simple that almost any telephone line will carry it.</p>
+
   <figure class="player" id="p300" data-call="fsk300" data-variants='[{"label":"Bell 103 (North America)","options":{"plan":"bell103"}},{"label":"V.21 (rest of the world)","options":{"plan":"v21"}}]'>
-    <figcaption><span class="listen">Listen</span><h3>A 300 bit/s call, from answer to login</h3><p>Test.</p></figcaption>
+    <figcaption><span class="listen">Listen</span><h3>A 300 bit/s call, from answer to login</h3><p>Watch the two lens windows once data starts. Each dip in the line is a 0 bit, and the letters above are the characters being spelled out. The caller is a person typing; the answerer is a computer echoing each keystroke back.</p></figcaption>
   </figure>
-  <figure class="player" id="p56" data-call="v90" data-options='{}'>
-    <figcaption><span class="listen">Listen</span><h3>V.90</h3><p>Test.</p></figcaption>
+
+  <p>Switch the player to <em>V.21</em> and you will hear the first of many transatlantic disagreements. The CCITT standardized 300 bit/s modems in 1964 with the same idea and different notes: 980 and 1,180 Hz for the caller, 1,650 and 1,850 Hz for the answerer, with the <em>lower</em> tone of each pair meaning 1{{cite itu-v21}}. A Bell modem and a V.21 modem cannot hear each other at all. The international version also opens with something the Bell version lacks, a 2,100 Hz <strong>answer tone</strong> lasting about three seconds{{cite itu-v25}}. Long-distance circuits of the era contained “echo suppressors,” devices that muted one direction whenever the other was talking, which is helpful for conversation and fatal for two modems speaking at once. A steady 2,100 Hz tone was the agreed signal to switch them off. That tone, adopted in 1968, is the single most durable sound in the handshake. It opens every call from here to 56k.</p>
+
+  <figure class="widget" data-widget="typer">
+    <div class="w-head"><span class="listen">Try it</span><h3>Type something, and hear it at 300 baud</h3><p class="w-blurb">Your text becomes exactly the tones a Bell 103 modem would send: ten bits per character, 1,270 Hz for 1 and 1,070 Hz for 0.</p></div>
+    <div class="w-panel"><p class="p-nojs">With JavaScript on, this box turns typed text into Bell 103 tones. In words: each character becomes a start bit (0), its eight data bits sent least-significant first, and a stop bit (1). “A” is 0 1000 0010 1, so you hear low, high, low-low-low-low-low, high, low, high.</p></div>
   </figure>
+
+  <aside class="sidebar" id="sb-at">
+    <p class="label">Sidebar</p>
+    <h3>ATDT: the language that outlived the modem</h3>
+    <p>Before the Smartmodem, each modem maker invented its own way for a computer to give orders. Hayes’s answer was to make the modem listen to the same wire the data used. Every command line begins with the two letters <code>AT</code>, for “attention,” and they do real work: the modem measures the speed of your computer from the shape of the <code>A</code> and its parity setting from the <code>T</code>{{cite hayes-sm300-manual}}.</p>
+    <div class="table-scroll"><table>
+      <tr><th><code>ATDT 5550142</code></th><td>Dial, using Touch-Tones. <code>ATDP</code> dials with rotary-style pulses, which was the factory default{{cite hayes-techref-1990}}.</td></tr>
+      <tr><th><code>ATA</code></th><td>Answer the phone now.</td></tr>
+      <tr><th><code>ATH</code></th><td>Hang up.</td></tr>
+      <tr><th><code>ATZ</code></th><td>Reset to the stored settings.</td></tr>
+      <tr><th><code>ATS0=1</code></th><td>Set “S-register” 0 to 1: answer automatically after one ring. Zero, the default, means never.</td></tr>
+      <tr><th><code>ATM0</code></th><td>Speaker off. This is the one that explains this entire page. The default was <code>M1</code>: “Speaker on until carrier detected”{{cite hayes-techref-1990}}. You heard the handshake because the modem let you eavesdrop until the moment it succeeded, so that you could tell a busy signal or a human “hello?” from a computer.</td></tr>
+      <tr><th><code>+++</code></th><td>Not a command but an escape hatch: one second of silence, three plus signs, one more second of silence, and the modem stops passing your typing through and listens for commands again{{cite hayes-sm300-manual}}.</td></tr>
+    </table></div>
+    <p>The modem answered with result codes that became folklore in their own right: <code>OK</code>, <code>RING</code>, <code>BUSY</code>, <code>CONNECT 2400</code>, and the bleakest two words in computing, <code>NO CARRIER</code>.</p>
+    <p>The silence around <code>+++</code> mattered. Without it, a file that happened to contain three plus signs would hang up your call. Heatherington patented the guard-time idea{{cite patent-302}}, and after it issued in 1985 Hayes wrote to some 170 modem makers asking them to license it{{cite hayes-history-fu}}. The command set itself spread to every modem maker, was written into an ITU standard, and is still how software talks to the radio in a mobile phone, where the speaker commands <code>L</code> and <code>M</code> remain mandatory to accept and are, the specification notes, “ignored”{{cite itu-v250 3gpp-27007}}.</p>
+  </aside>
+
+  <aside class="sidebar" id="sb-bbs">
+    <p class="label">Sidebar</p>
+    <h3>The wild world of bulletin boards</h3>
+    <p>January 16, 1978 was, in Ward Christensen’s words, “a very snowy day” in Chicago. Unable to dig out, he phoned Randy Suess, and the two decided to build a computer that other hobbyists could call{{cite birth-of-bbs}}. Christensen wrote the software; Suess built the hardware around his Hayes modem board and insisted it live at his house in the city rather than be run as a club project. They announced it at their computer club and asked how many members could call in.</p>
+    <blockquote class="pull"><p>“We expected perhaps five or ten, but 25 hands were raised!”</p><footer>Ward Christensen and Randy Suess, <cite>BYTE</cite>, November 1978{{cite byte-1978-11-cbbs}}</footer></blockquote>
+    <p>They called it CBBS, the Computerized Bulletin Board System, and gave its birthday as February 16, 1978, a date Christensen later admitted they picked after the fact{{cite birth-of-bbs}}. One caller at a time, on one phone line. Christensen had already written, the previous summer, the little program whose file-transfer method became XMODEM, the first way most people ever sent a file between two personal computers. He called it “a quick hack I threw together, very unplanned (like everything I do)”{{cite forsberg-xmodem}}.</p>
+    <p>The idea spread to anyone with a spare phone line. By the end of 1992 the editor of <cite>Boardwatch</cite> magazine counted some 45,000 public boards in the United States with more than 12 million callers, and expected more than half of those boards to vanish and be replaced within a year{{cite wired-1993-rickard}}. They had message forums, file libraries and “door games” such as <cite>Legend of the Red Dragon</cite> and <cite>TradeWars 2002</cite>, played one turn a day{{cite pcmag-2016-doors}}. Each board was somebody’s computer, in somebody’s house, with a modem set to <code>ATS0=1</code>.</p>
+  </aside>
 </section>

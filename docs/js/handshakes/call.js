@@ -164,7 +164,7 @@ export function dialPreamble(call, { digits = '5550142', t = 0.3 } = {}) {
   call.step(t, 'Dial tone', 'The modem takes the phone off the hook, exactly as you would, and waits for the exchange to offer dial tone: 350 Hz and 440 Hz sounding together.', 'Telephone network');
   call.put(NETWORK, t, mix(tone(350, dialTone, { amp: AMP * 0.45 }), tone(440, dialTone, { amp: AMP * 0.45 })), 'Dial tone', 'nominal', '350 + 440 Hz (North American precise tone plan). Duration is however long the modem waits.');
   t += dialTone;
-  call.step(t, 'Tone dialling', `Each digit of ${digits.slice(0, 3)}-${digits.slice(3)} is a pair of tones, one from a low group and one from a high group, so that speech is unlikely to imitate it. This is the same Touch-Tone signalling a telephone keypad sends.`, 'Touch-Tone, 1963');
+  call.step(t, 'Tone dialing', `Each digit of ${digits.slice(0, 3)}-${digits.slice(3)} is a pair of tones, one from a low group of four pitches and one from a high group, the same Touch-Tone signaling a telephone keypad sends.`, 'Telephone network');
   for (const key of digits) {
     call.put(CALLER, t, dtmf(key, 0.095), key, 'nominal', `DTMF "${key}" (ITU-T Q.23 frequency pair). Digit and gap lengths are modem settings; these are typical.`);
     t += 0.19;

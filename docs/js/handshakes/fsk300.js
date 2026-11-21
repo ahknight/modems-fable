@@ -50,7 +50,7 @@ export function fsk300({ plan = 'bell103' } = {}) {
 
   // -- Answering modem ---------------------------------------------------------
   const silence = 2.0;
-  call.step(0, 'The line connects', 'The answering modem has picked up. For about two seconds it says nothing at all. The pause keeps the tones from interfering with the telephone network’s own signalling as the call is set up.', bell ? 'Telephone network' : 'V.25, 1968');
+  call.step(0, 'The line connects', 'The answering modem has picked up. For about two seconds it says nothing at all. The pause keeps the tones from interfering with the telephone network’s own signaling as the call is set up.', bell ? 'Telephone network' : 'V.25, 1968');
   call.mark(ANSWERER, 0, silence, 'Silence', bell ? 'nominal' : 'spec', bell ? 'Answering data sets wait before sending carrier; two seconds is typical.' : 'V.25 clause 4.3: 1.8 to 2.5 s of silence after going off-hook.');
 
   let answerCarrier = silence;
@@ -127,6 +127,7 @@ export function fskText(text, { plan = 'bell103', side = 'caller', lead = 0.25 }
   const { bits, chars } = keyed(leadBits * 2 + text.length * 10, events);
   call.lines[who].add(0, fsk(bits, { baud: BAUD, ...freqs, amp: AMP }));
   call.bitTracks.push({ who, t0: 0, baud: BAUD, bits, chars, ...freqs });
-  call.mark(who, 0, bits.length * BIT, 'Your text', 'spec', '');
+  call.mark(who, 0, bits.length * BIT, 'Your text', 'spec', `Continuous-phase FSK at 300 baud, 1 = ${freqs.mark} Hz, 0 = ${freqs.space} Hz, one start bit, eight data bits, one stop bit.`);
+  call.step(0, 'Your text at 300 bits per second', `The tone rests at ${freqs.mark} Hz, meaning 1. Each character begins with a dip to ${freqs.space} Hz (the start bit, always 0), then its eight bits, lowest first, then a return to ${freqs.mark} Hz (the stop bit).`, FSK_PLANS[plan].origin);
   return call.finish(0.05);
 }

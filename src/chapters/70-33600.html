@@ -1,0 +1,55 @@
+<section class="chapter" id="c33600" data-nav="33.6k" data-sub="1996">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 7 · The ceiling</p>
+    <h2><span class="speed">33,600<small>bits per second</small></span>As fast as a phone call can go</h2>
+    <p class="dek">The last analog modem standard squeezed out one more step and stopped. It stopped because a mathematician had explained, in 1948, where the stopping place would be.</p>
+    <dl class="facts">
+      <div><dt>Standard</dt><dd>V.34, revised <small>ITU-T, October 18, 1996</small></dd></div>
+      <div><dt>What was added</dt><dd>31,200 and 33,600 bit/s <small>both optional</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>3,429 for 33,600 <small>the fastest V.34 rate</small></dd></div>
+      <div><dt>Constellation</dt><dd>up to 1,664 points</dd></div>
+      <div><dt>Gain over 28,800</dt><dd>17% <small>at best</small></dd></div>
+      <div><dt>Estimated limit of the channel</dt><dd>about 35,000 bit/s <small>an estimate; see below</small></dd></div>
+    </dl>
+  </header>
+
+  <h3>What it took</h3>
+  <p>Very little, technically. The 1996 revision of V.34 changes its title from “up to 28 800 bit/s” to “up to 33 600 bit/s” and adds two optional speeds{{cite itu-v34-1996 itu-v34}}. The step came from a larger constellation, not a new kind of signal{{cite forney-v34}}: at the fastest symbol rate, 3,429 a second, a 33,600 bit/s modem chooses among as many as 1,664 points. Manufacturers did not wait for the paperwork. A U.S. Robotics manual dated April 1996 already documents 31,200 and 33,600{{cite usr-courier-1996}}, six months before the ITU’s approval.</p>
+  <p>The press was unimpressed. In the <cite>New York Times</cite>, Stephen Manes called it “a new 33.6 kbps data rate, which offers a measly 17 percent improvement at best”{{cite nyt-1996-04-manes}}. It was often called “V.34 bis” in print, a name the ITU never gave it{{cite nyt-1996-09}}. And “at best” was doing real work in that sentence: 33,600 needed an unusually clean connection, and by one Bell Labs account even 28,800 was reachable on only part of the American network{{cite ayanoglu-1998}}.</p>
+
+  <h3>Why there was nothing left</h3>
+  <p>In 1948 Claude Shannon of Bell Labs published a formula for the most information any channel can carry, no matter how clever the equipment at its ends. It depends on only two things: how wide a band of frequencies the channel passes, and how much stronger the signal is than the noise{{cite shannon-1948}}. Double the bandwidth and capacity doubles. Make the signal ten times stronger relative to the noise and you gain only about 3.3 more bits for every hertz of bandwidth. There is no third lever.</p>
+  <blockquote class="pull">
+    <p>“The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.”</p>
+    <footer>Claude Shannon, “A Mathematical Theory of Communication,” 1948{{cite shannon-1948}}</footer>
+  </blockquote>
+  <p>For a telephone call, both numbers are fixed by the telephone network, and neither by the copper wire to your house. By the 1990s the network was digital inside. At the telephone company’s office your line ends at a converter that measures the voltage 8,000 times a second and records each measurement as an eight-bit number, one of 256 codes. That stream of numbers, 64,000 bits per second, is the call{{cite ayanoglu-1998}}. At the far end another converter turns the numbers back into a voltage.</p>
+  <p>Sampling 8,000 times a second cannot represent frequencies above 4,000 Hz, and the filters that guard the converter cut off well below that: the usable band is 3 to 3.5 kHz. And rounding every measurement to the nearest of 256 levels introduces a small error on every sample, which is exactly as good as adding a faint hiss. Engineers put the resulting signal-to-noise ratio at 33 to 39 dB{{cite ayanoglu-1998}}.</p>
+  <p>Put those figures into Shannon’s formula and you get a capacity in the middle 30,000s of bits per second. Bell Labs authors wrote “about 36”; other engineers and one patent say about 35{{cite ayanoglu-1998 townshend-patent eetimes-gao-1998}}. These are estimates, since no two calls have the same bandwidth or noise, but they all say the same thing. V.34 at 33,600 is not merely a good modem. It is operating within several percent of the estimated limit of the channel it was designed for. The engineers had finished.</p>
+
+  <figure class="widget" data-widget="shannon">
+    <div class="w-head"><span class="listen">Try it</span><h3>Shannon’s two levers</h3><p class="w-blurb">Set the bandwidth and the signal-to-noise ratio and read off the most any modem could ever carry. The marked region is what the digital telephone network gives an analog modem.</p></div>
+    <div class="w-panel"><p class="p-nojs">With JavaScript on, this calculates Shannon capacity from bandwidth and signal-to-noise ratio. As a worked example: 3,400 Hz of bandwidth at 36 dB gives 3,400 × log₂(1 + 3,981) ≈ 40,700 bit/s; 3,100 Hz at 34 dB gives about 35,000.</p></div>
+  </figure>
+
+  <h3>Hearing the line decide</h3>
+  <p>Since 33,600 uses the same handshake as 28,800, the honest thing to demonstrate here is what makes the difference between them on a given call: the line. The player below runs the V.34 handshake for four imaginary connections. The <em>sounds</em> in each are built to the standard for the symbol rate shown. The link between “line quality” and outcome is our illustration; a real modem makes that decision from its probing measurements, by rules each manufacturer wrote for itself.</p>
+
+  <figure class="player" id="p33600" data-call="v34" data-variants='[{"label":"Superb line: 3,429 baud → 33,600","options":{"rate":33600,"rateName":"3429"}},{"label":"Good: 3,200 baud → 28,800","options":{"rate":28800,"rateName":"3200"}},{"label":"Fair: 3,000 baud → 26,400","options":{"rate":26400,"rateName":"3000"}},{"label":"Poor: 2,400 baud → 21,600","options":{"rate":21600,"rateName":"2400"}}]'>
+    <figcaption><span class="listen">Listen</span><h3>One standard, four outcomes</h3><p>Switch variants and compare the final hiss. On the superb line it fills the picture from near 250 Hz to past 3,650 Hz. On the poor line it is the narrow 2,400-baud band of 1984, and it sounds duller.</p></figcaption>
+  </figure>
+
+  <p><strong>What changed from 28,800.</strong> In the handshake, two capability bits: one in the opening exchange declaring support for constellations up to 1,664 points, and entries for the two new speeds in the final parameter frames{{cite itu-v34}}. In the sound, nothing you could name.</p>
+  <p><strong>Required and optional.</strong> Both new speeds are optional, as is the 3,429 symbol rate they depend on. A 33.6 modem is a V.34 modem and negotiates as one; the option simply never comes up unless both ends offer it and the line allows it.</p>
+
+  <aside class="sidebar" id="sb-oneline">
+    <p class="label">Sidebar</p>
+    <h3>Living with one phone line</h3>
+    <p>A modem call is a phone call, and for most households there was one phone. While you were online, callers got a busy signal. And if you had call waiting, the click announcing a second call interrupted the carrier, and the modem did what it does when the carrier stops{{cite hayes-techref-1990}}: <code>NO CARRIER</code>.</p>
+    <p>The remedy was a prefix that switched call waiting off for one call, usually <code>*70</code>, which is why so many saved phone numbers in so many dialing programs began with <code>*70,</code>. The comma is a Hayes dialing instruction meaning “pause here”{{cite hayes-techref-1990}}, to give the dial tone time to come back. Windows eventually offered the prefix as a checkbox{{cite ms-kb-275578}}.</p>
+    <p>The other remedy was a second line, and people bought them in astonishing numbers. The FCC counted 2.3 million additional residential lines in the United States in 1988, 16 million in 1996, and a peak of 26.3 million in 2001. Then broadband arrived, and by 2006 the figure was 10.5 million{{cite fcc-trends-2008}}.</p>
+    <p>Being online was also, at first, metered like a taxi. CompuServe in 1987 charged $6 an hour at 300 bit/s and $12.50 an hour at 1,200 or 2,400, so a faster modem cost more per hour and you bought one hoping to spend fewer hours{{cite tribune-1987-compuserve}}. Until late 1996 America Online charged $9.95 a month for five hours and $2.95 for each hour after{{cite sfgate-1996-aol}}. On December 1, 1996 it switched to $19.95 for unlimited use{{cite sfgate-1996-aol}}. Members stopped hanging up. Usage per member more than doubled, and through January 1997 the defining sound of the Internet was a busy signal{{cite latimes-1997-aol ap-1997-aol-busy}}.</p>
+    <blockquote class="pull"><p>“The reality is no one’s ever built a dial-up network of this size.”</p><footer>Bob Pittman of AOL, January 1997{{cite ap-1997-aol-busy}}</footer></blockquote>
+    <p>AOL spent $350 million on capacity and by that November had more than 600,000 modems answering its phones{{cite ap-1997-aol-10m}}.</p>
+  </aside>
+</section>

@@ -1,0 +1,48 @@
+<section class="chapter" id="c14400" data-nav="14.4k" data-sub="1991–1994">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 5 · The modem everybody had</p>
+    <h2><span class="speed">14,400<small>bits per second</small></span>The same song, with more dots</h2>
+    <p class="dek">Nothing about the handshake changed that you could hear. What changed was the price, and with it who was on the other end of the line.</p>
+    <dl class="facts">
+      <div><dt>Standard</dt><dd>V.32 bis <small>CCITT, February 22, 1991</small></dd></div>
+      <div><dt>How bits become sound</dt><dd>Trellis-coded QAM <small>128 points</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>2,400 baud</dd></div>
+      <div><dt>Bits per symbol</dt><dd>6 data + 1 redundant</dd></div>
+      <div><dt>Also new</dt><dd>12,000 and 7,200 bit/s</dd><dd>Mid-call speed changes</dd></div>
+      <div><dt>What it cost at home</dt><dd>$999 <small>March 1991</small></dd><dd>$399.95 <small>January 1992</small></dd></div>
+    </dl>
+  </header>
+
+  <h3>What it took</h3>
+  <p>Not a new idea; a bolder use of the last one. V.32 bis keeps V.32’s 2,400 symbols a second, its 1,800 Hz carrier and its echo cancellation, and asks each symbol to carry six data bits instead of four. With the trellis code’s extra bit that is seven bits per symbol, and seven bits means a constellation of 128 points{{cite itu-v32bis}}. Compare them in the noise widget in the 2,400 chapter: the dots of 14,400 sit so close together that the same line noise a 9,600 modem shrugs off will scatter them into each other. What made it workable was six more years of cheaper, faster signal-processing chips, which bought better equalizers and echo cancellers than a 1984 design could afford.</p>
+  <p>Because a line good enough for 14,400 at the start of a call might not stay that way, V.32 bis also fills in the steps of the ladder, adding 12,000 and 7,200 bit/s, and lets the two modems climb or descend it in the middle of a call without the several-second silence of a full retrain{{cite itu-v32bis}}. The standard calls this “rate renegotiation.” If you ever heard a connected modem give a brief hiccup of hiss and carry on, that may have been it.</p>
+
+  <figure class="player" id="p14400" data-call="v32" data-variants='[{"label":"V.32 bis, 14,400 bit/s","options":{"rate":14400}},{"label":"V.32, 9,600 bit/s, for comparison","options":{"rate":9600}}]'>
+    <figcaption><span class="listen">Listen</span><h3>A 14,400 bit/s call</h3><p>Flip between the two variants and try to hear the difference. You will not, and that is an honest result: same carrier, same symbol rate, same training. The whole difference is in the lens at the very end, where 32 points become 128.</p></figcaption>
+  </figure>
+
+  <p><strong>What changed from 9,600.</strong> In the handshake, one thing: the 16-bit “rate words” the modems exchange gained bits for the new speeds, and a flag that says <em>I speak V.32 bis</em>{{cite itu-v32bis}}. A V.32 modem that hears the longer word simply sees a caller offering 9,600 and 4,800, and connects at 9,600. In the data: the denser constellation. That is all, and within about two years it had displaced 9,600.</p>
+  <p><strong>Required and optional.</strong> V.32 bis requires the trellis code at every speed from 7,200 up; the uncoded option survives only for 4,800. Rate renegotiation is part of the standard. Fax was a separate matter: the fax standard for 14,400, V.17, was approved the same day. It is also trellis-coded but works in one direction at a time, and a modem could have one without the other. <cite>BYTE</cite> found thirteen 14.4 data modems in 1993 that could fax only at 9,600{{cite itu-v17 byte-1993-07}}.</p>
+
+  <h3>The price collapse</h3>
+  <p>The first V.32 bis modems cost what fast modems had always cost. In March 1991 U.S. Robotics’ Courier V.32 bis listed at $999{{cite pcmag-1991-03}}. Ten months later Supra Corporation of Albany, Oregon, announced one at $399.95, with fax. It credited chip sets from Rockwell International and claimed its price was a half to a third of comparable modems’{{cite st-report-supra}}.</p>
+  <p>This is the consequence of the handover described at the end of the last chapter. Once a semiconductor company sold the entire modem as a few chips, a modem maker no longer needed a team of signal-processing specialists. It needed a circuit board, a case and a distributor. By the middle of 1993 <cite>BYTE</cite> called V.32 bis the standard for both corporate dial-up and bulletin boards, at only a small premium over 9,600{{cite byte-1993-07}}.</p>
+  <p>The timing mattered more than anyone selling modems in 1992 could have known. The fast, cheap, standardized modem was already on desks when the World Wide Web gave people a reason to leave it connected for hours.</p>
+
+  <p class="disputed"><b>Not an ITU standard</b> A 19,200 bit/s scheme called V.32terbo appeared in 1993 from a group of manufacturers that included AT&amp;T. Despite its name it was never a CCITT or ITU Recommendation; <cite>BYTE</cite> put the word “standard” in quotation marks{{cite byte-1993-07}}. It was a placeholder for what the next chapter describes.</p>
+
+  <figure class="widget" data-widget="download">
+    <div class="w-head"><span class="listen">Try it</span><h3>How long did that take?</h3><p class="w-blurb">Pick something you might have downloaded and a modem to do it with. Times assume the modem holds its rated speed for the whole transfer, which a real line often did not allow.</p></div>
+    <div class="w-panel"><p class="p-nojs">With JavaScript on, this compares download times across modem speeds. As a reference point: one megabyte at 14,400 bit/s takes about ten minutes with error correction on and nothing compressible in the file.</p></div>
+  </figure>
+
+  <aside class="sidebar" id="sb-ppp">
+    <p class="label">Sidebar</p>
+    <h3>SLIP and PPP: how a phone call became an Internet connection</h3>
+    <p>Everything so far delivers a stream of characters, as if your computer were a terminal wired to someone else’s machine. To be <em>on</em> the Internet, your computer has to send and receive Internet packets itself, and something has to mark where each packet begins and ends in that stream.</p>
+    <p>The first widespread answer was SLIP, the Serial Line Internet Protocol, which did exactly that and nothing more. The 1988 document describing it is titled, with unusual candor, “A Nonstandard for Transmission of IP Datagrams over Serial Lines,” and lists what it lacks: no way to tell the two ends each other’s addresses, no way to carry anything but IP, no error detection, no compression{{cite rfc1055}}. You typed your address in by hand and hoped.</p>
+    <p>The <strong>Point-to-Point Protocol</strong>, PPP, first proposed in 1989 and settled in its lasting form in 1994, is a second handshake that begins after the one you can hear{{cite rfc1134 rfc1661}}. Once the modems connect, the two computers negotiate again, in three rounds: a Link Control Protocol to agree on packet sizes and options; an authentication step where you prove who you are, either by sending a password in the clear (PAP) or by answering a challenge so the password never crosses the wire (CHAP){{cite rfc1334 rfc1994}}; and a control protocol for each kind of traffic, which for the Internet is where the provider hands your computer its address for the duration of the call{{cite rfc1332}}.</p>
+    <p>One optimization shows how precious modem bandwidth was. Every TCP/IP packet carried a 40-byte header, most of it identical from one packet to the next. Van Jacobson’s header compression, published in 1990, squeezed those 40 bytes to an average of about three{{cite rfc1144}}.</p>
+    <p>For most people in 1994 the hard part was that their operating system did not include any of this. On Windows the gap was filled by Trumpet Winsock, shareware written by Peter Tattam in Tasmania{{cite trumpet-case}}. Windows 95 built PPP dialing into the system{{cite ms-kb-q138789}}, and the box you typed a phone number, a name and a password into became, for a few years, the front door of the Internet.</p>
+  </aside>
+</section>

@@ -1,0 +1,80 @@
+<section class="chapter" id="c1200" data-nav="1200" data-sub="1973–1984">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 2 · Four times faster</p>
+    <h2><span class="speed">1200<small>bits per second</small></span>The whistle becomes a hiss</h2>
+    <p class="dek">To go faster, modems stopped changing the pitch of a tone and started changing its timing. It is the moment the handshake stops sounding like music.</p>
+    <dl class="facts">
+      <div><dt>Standards</dt><dd>Bell 212A <small>AT&amp;T, 1976</small></dd><dd>V.22 <small>CCITT, 1980</small></dd></div>
+      <div><dt>How bits become sound</dt><dd>DPSK <small>4 phase shifts of a carrier</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>600 baud</dd></div>
+      <div><dt>Bits per symbol</dt><dd>2</dd></div>
+      <div><dt>Carriers</dt><dd>1,200 Hz caller</dd><dd>2,400 Hz answerer</dd></div>
+      <div><dt>What it cost at home</dt><dd>$699 list <small>Smartmodem 1200, by 1984</small></dd></div>
+    </dl>
+  </header>
+
+  <p>A 300 bit/s modem fits two conversations into a phone line by giving each its own pair of tones. You cannot simply whistle four times faster: the quicker you switch between notes, the wider the band of frequencies each conversation smears across, until the caller’s band collides with the answerer’s. In 1972, sending 1,200 bit/s over a dialed call meant taking turns, one direction at a time, with a pause to turn the line around{{cite cw-1972-vadic}}.</p>
+
+  <h3>What it took</h3>
+  <p>The way through was to carry more than one bit in each change of the signal. Instead of two notes, use <em>one</em> steady tone, the <strong>carrier</strong>, and nudge its timing. Picture a clock hand sweeping around 1,200 times a second. Six hundred times a second, the modem makes the hand jump ahead by a quarter turn, a half turn, three quarters, or not at all. Four possible jumps can stand for two bits: 00, 01, 10 or 11. The receiver does not need to know where the hand is, only how far it just jumped, which is why this is called <em>differential</em> phase-shift keying{{cite itu-v22}}.</p>
+  <p>Six hundred changes a second carrying two bits each is 1,200 bits per second, and at 600 changes a second each direction still fits in its own half of the voice band. The caller’s carrier sits at 1,200 Hz and the answerer’s at 2,400 Hz{{cite itu-v22}}.</p>
+  <p>The hard part was the plumbing. On a real phone line, a modem’s own transmission reflects back at it far louder than the faint signal arriving from the other end. John Bingham, who worked out the theory for the first modem to do this, remembered needing “something like 60 or 65 dB of filtering to extract the little tiny receive signal from the very large reflected transmit signal”{{cite bingham-pelkey}}. Sixty decibels is a ratio of a million to one in power.</p>
+
+  <h3>Who did it</h3>
+  <p>Not the Bell System. A small California company, Vadic, announced the <strong>VA3400</strong> in December 1972 for $600 and shipped the first units in May 1973{{cite cw-1972-vadic bingham-pelkey}}. Bingham credits the filter circuits to Ted Saunders; Kim Maxwell was the company’s president{{cite bingham-pelkey}}. Nearly four years later <cite>Computerworld</cite> was still pointing out that full-duplex 1,200 bit/s “is still not available from the Bell System today”{{cite cw-1976-09-bell}}.</p>
+  <p>AT&amp;T’s answer, the <strong>Bell 212A</strong>, was shown in Chicago in November 1976 at a rent of about $40 a month{{cite cw-1976-11-15}}. It was designed at Bell Labs after the company had evaluated Vadic’s modem, and it was incompatible with it{{cite cw-1976-11-29-editorial}}. It also included a 300 bit/s Bell 103 inside, so one box could call old modems and new ones. It became the dominant American standard{{cite cw-1986-standards}}, and Vadic was reduced to selling a “triple modem” that spoke its own scheme, Bell’s, and the 103’s. Its advertisement took the form of a letter:</p>
+
+  <blockquote class="pull">
+    <p>“You just can’t seem to catch up, Ma. Vadic invented the 1200 bps full duplex modem (the VA3400) way back in 1973.”</p>
+    <footer>Vadic Corporation advertisement addressed to “Ma” Bell, <cite>Computerworld</cite>, January 1978{{cite cw-1978-vadic-ad}}</footer>
+  </blockquote>
+
+  <p>The CCITT standardized the same technique as <strong>V.22</strong> in 1980{{cite itu-v22}}. For home users the speed arrived with the Hayes Smartmodem 1200, on sale by December 1982 and advertised as “four times faster than any 300 bps modem, to be precise”{{cite pcmag-1982-12}}. Its list price was $699{{cite pcmag-1984-08}}.</p>
+
+  <p class="disputed"><b>Disputed</b> Sources give 1972, 1973, 1974 and 1975 for the VA3400, depending on whether they mean announcement, first shipment, or the redesigned version its engineers considered finished{{cite cw-1972-vadic bingham-pelkey}}. Some documents date the Bell 212A to September 1976 (its specification) and others to November (its public debut){{cite cw-1976-11-15}}.</p>
+
+  <h3>The scrambler: why it sounds like static</h3>
+  <p>There is a second new idea in these modems, and it is the reason the dial-up sound turns ugly. A receiver locks onto the incoming carrier by watching it change. If you hold down one key, or send a long run of blanks, the data stops changing in any interesting way and the receiver can lose its grip. So Bell’s and the CCITT’s modems pass all data through a <strong>scrambler</strong> first: a small circuit that stirs each bit together with bits sent a moment earlier, so that whatever goes in, something busy and random-looking comes out. The far end runs the same stirring in reverse{{cite itu-v22}}. Bingham described its purpose:</p>
+
+  <blockquote class="pull">
+    <p>“A scrambler is a device that randomizes the customers’ data, in order to make sure that certain critical circuits, generally in the receiver, don’t get hung up on certain steady, repeated patterns.”</p>
+    <footer>John Bingham, interviewed by James Pelkey, 1988{{cite bingham-pelkey}}</footer>
+  </blockquote>
+
+  <p>Random-looking phase jumps 600 times a second do not sound like a tone. They sound like a band of hiss about 600 Hz wide. From this generation on, a modem that is working correctly sounds like noise, and the only pure tones left are the ones at the start of the call, before the scramblers switch on. Vadic’s modem had no scrambler, because the chips to build one would have run too hot, and its designers regretted it “to the end”{{cite bingham-pelkey}}.</p>
+
+  <h3>The handshake grows a second act</h3>
+  <p>With a scrambler at each end there is now something to synchronize, so the handshake needs steps. The V.22 standard fixes them to the millisecond{{cite itu-v22 itu-v25}}:</p>
+  <ol>
+    <li>The answerer waits about two seconds, plays the 2,100 Hz answer tone for about 3.3 seconds, and pauses 75 milliseconds.</li>
+    <li>It then sends its carrier with <em>unscrambled</em> ones. Every pair of ones is the same quarter-turn, so this sounds like a steady tone 150 Hz below the 2,400 Hz carrier, at 2,250 Hz.</li>
+    <li>The caller listens for 155 ms to be sure, waits a further 456 ms, and replies with <em>scrambled</em> ones on its own carrier: the first burst of hiss.</li>
+    <li>The answerer hears scrambled data for 270 ms and switches its own ones to scrambled.</li>
+    <li>Each side counts off 765 ms more, and data begins.</li>
+  </ol>
+
+  <figure class="player" id="p1200" data-call="v22" data-variants='[{"label":"V.22 (international)","options":{"rate":1200,"answer":"v25"}},{"label":"Bell 212A-style answer","options":{"rate":1200,"answer":"bell"}},{"label":"V.22 with guard tone","options":{"rate":1200,"answer":"v25","guard":true}}]'>
+    <figcaption><span class="listen">Listen</span><h3>A 1,200 bit/s call</h3><p>In the lens windows, each modem’s signal now appears as a point jumping among four positions on a circle. Those four positions are the four possible quarter-turns. Watch the answerer’s point step steadily around while it sends unscrambled ones, then scatter when the scrambler switches on.</p></figcaption>
+  </figure>
+
+  <p><strong>What changed from 300.</strong> One carrier per direction instead of two tones. Two bits per symbol instead of one. A scrambler, and with it a handshake with timed stages. And a fork: try the player’s <em>Bell 212A-style answer</em>. An American 212A does not send the 2,100 Hz tone at all; it answers with the old Bell 103 whistle at 2,225 Hz. A 300-baud caller hears a 103 and proceeds the old way. A 1,200 caller notices that 2,225 Hz is within a whisker of the 2,250 Hz it was expecting and proceeds the new way. The V.22 text acknowledges the trick in a dry note: “modems are in service which emit an answering tone of 2225 Hz instead of unscrambled binary 1”{{cite itu-v22}}. Backward compatibility, achieved by coincidence of arithmetic, is the pattern for everything that follows.</p>
+
+  <p><strong>Required and optional.</strong> V.22 requires the two carriers, the four phase shifts, the scrambler and the handshake above. It leaves each country to decide on a <em>guard tone</em>, a constant 1,800 Hz whistle sent alongside the answerer’s signal (third variant in the player){{cite itu-v22}}. The standard does not say why. The usual explanation, which we have not traced to a primary source, is that some national networks used tones inside the voice band for their own signaling and needed constant energy elsewhere to avoid mistaking a modem for a command. Neither standard corrects errors. A click on the line became a wrong character on your screen. Fixing that is the next chapter’s business.</p>
+
+  <aside class="sidebar" id="sb-baud">
+    <p class="label">Sidebar</p>
+    <h3>What is “baud”?</h3>
+    <p>Baud is how many times per second the signal on the line <em>changes</em>. Bits per second is how much data gets through. At 300 bit/s the two numbers are equal, because each change carries one bit, and so everyone got into the habit of saying “300 baud.” The habit outlived its accuracy by decades.</p>
+    <p>A 1,200 bit/s modem is a <strong>600</strong> baud modem: 600 changes a second, two bits riding on each. Every faster modem in this story works the same way, by packing more bits onto each change, not by changing much faster. The modern definition is exact: one baud is one signaling interval per second, and if each interval can take one of <i>n</i> states, bits per second equals baud times log<sub>2</sub> <i>n</i>{{cite atis-baud}}.</p>
+    <div class="table-scroll"><table>
+      <tr><th>300 bit/s</th><td>300 baud × 1 bit</td></tr>
+      <tr><th>1,200 bit/s</th><td>600 baud × 2 bits</td></tr>
+      <tr><th>2,400 bit/s</th><td>600 baud × 4 bits</td></tr>
+      <tr><th>9,600 bit/s</th><td>2,400 baud × 4 bits</td></tr>
+      <tr><th>14,400 bit/s</th><td>2,400 baud × 6 bits</td></tr>
+      <tr><th>28,800 bit/s</th><td>3,200 baud × 9 bits (one common combination)</td></tr>
+      <tr><th>56,000 bit/s</th><td>8,000 baud × 7 bits</td></tr>
+    </table></div>
+    <p>So there was never a “9600 baud modem” in anyone’s house, and a “56k baud” modem is a contradiction: a phone line cannot carry 56,000 changes a second. The unit honors the French telegraph engineer Émile Baudot. An international telegraph committee meeting in Berlin in November 1926 defined one unit interval per second as one baud, “pour honorer la mémoire du grand télégraphiste Emile Baudot”{{cite ccit-1926}}.</p>
+  </aside>
+</section>

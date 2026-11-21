@@ -1,0 +1,62 @@
+<section class="chapter" id="c2400" data-nav="2400" data-sub="1984–1990">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 3 · One standard for the world</p>
+    <h2><span class="speed">2400<small>bits per second</small></span>A secret knock</h2>
+    <p class="dek">The same 600 symbols a second, now carrying four bits each. The interesting part is how a new modem found out, in a tenth of a second, whether it was talking to another one.</p>
+    <dl class="facts">
+      <div><dt>Standard</dt><dd>V.22 bis <small>CCITT, 1984</small></dd></div>
+      <div><dt>How bits become sound</dt><dd>QAM <small>16 combinations of phase and loudness</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>600 baud</dd></div>
+      <div><dt>Bits per symbol</dt><dd>4</dd></div>
+      <div><dt>Optional companions</dt><dd>MNP 2–5 <small>Microcom</small></dd><dd>V.42, V.42 bis <small>1988, 1990</small></dd></div>
+      <div><dt>What it cost at home</dt><dd>$899 list <small>Smartmodem 2400, 1985</small></dd></div>
+    </dl>
+  </header>
+
+  <h3>What it took</h3>
+  <p>The 1,200 bit/s modem’s clock hand could jump four ways. To double the speed without using any more of the phone line, the 2,400 bit/s modem keeps the hand jumping 600 times a second but also changes how <em>long</em> the hand is, that is, how loud the carrier is at that instant. Two bits choose which quarter of the dial the hand jumps to, as before; two more choose among four positions inside that quarter, which differ in length and angle. That gives sixteen distinguishable states, and sixteen states can carry four bits. This is <strong>quadrature amplitude modulation</strong>, QAM, and engineers draw it as a map of dots called a <strong>constellation</strong>: each dot is one legal combination of phase and loudness, and each symbol the modem sends is one dot{{cite itu-v22bis}}.</p>
+  <p>The price is fragility. With four widely spaced dots, noise has to shove the signal a long way before the receiver picks the wrong one. With sixteen dots in the same space, a smaller shove will do. So V.22 bis requires something the earlier standards did not: an <strong>adaptive equalizer</strong>, a circuit that measures how this particular telephone line distorts the signal and continuously un-distorts it{{cite itu-v22bis}}. That idea has its own inventor, whom we will meet in the next chapter, where it becomes indispensable.</p>
+
+  <figure class="widget" data-widget="constellation">
+    <div class="w-head"><span class="listen">Try it</span><h3>Why more dots need a cleaner line</h3><p class="w-blurb">Each dot is a symbol a modem might send. Noise on the line smears every received symbol into a cloud around its dot. When clouds touch, the receiver starts guessing wrong. Pick a constellation and turn up the noise.</p></div>
+    <div class="w-panel"><p class="p-nojs">With JavaScript on, this shows the constellations for 1,200, 2,400, 9,600 and 14,400 bit/s with adjustable noise. In words: 4 points tolerate heavy noise; 16 points in the same space fail with roughly a quarter of that noise power; 128 points need the noise to be about a hundred times weaker than the signal.</p></div>
+  </figure>
+
+  <h3>The handshake learns to ask a question</h3>
+  <p>A 2,400 bit/s modem that could only call other 2,400 bit/s modems would have been useless in 1985, when nearly every modem in the world was slower. It had to work out, without any help, what it had reached. The designers’ solution is the first true <em>negotiation</em> in the handshake, and it is elegant{{cite itu-v22bis}}.</p>
+  <p>The call opens exactly like a 1,200 bit/s call: silence, answer tone, the answerer’s steady unscrambled ones. Then, where a 1,200 caller would begin its scrambled hiss, a 2,400 caller first sends a <em>100-millisecond</em> burst of a special unscrambled pattern, alternating 00 and 11, called <strong>S1</strong>. To an older V.22 modem, S1 is a brief hiccup before the scrambled ones it was waiting for, and it carries on at 1,200. A V.22 bis answerer recognizes S1 and sends its own S1 straight back. Now each knows the other can do 2,400. Exactly 600 ms later both shift up, and 200 ms after that they are passing data.</p>
+
+  <figure class="player" id="p2400" data-call="v22" data-variants='[{"label":"V.22 bis, 2400 bit/s","options":{"rate":2400}},{"label":"Same call at 1200, for comparison","options":{"rate":1200}}]'>
+    <figcaption><span class="listen">Listen</span><h3>A 2,400 bit/s call</h3><p>The shift from 1,200 to 2,400 is almost inaudible, because the symbol rate and the carriers do not change. Watch the lens instead: at the step marked “Shift up,” four points become sixteen.</p></figcaption>
+  </figure>
+
+  <p><strong>What changed from 1,200.</strong> To the ear, almost nothing, and that is the point. The carriers, the symbol rate, the scrambler and the opening of the call are identical. The differences are the S1 knock, the sixteen-point constellation, and the equalizer working silently inside.</p>
+
+  <h3>Who did it, and why it mattered</h3>
+  <p>The first V.22 bis modems came from Concord Data Systems and Racal-Vadic (Vadic had been bought by Britain’s Racal in 1978{{cite pelkey-maxwell-summary}}) at about $1,700, “twice as much as the Hayes Smartmodem 1200”{{cite pcmag-1985-07}}. They sold to companies. Models aimed at personal computers were announced in late 1984; by July 1985 the Hayes Smartmodem 2400 listed at $899 and U.S. Robotics had already cut its Courier 2400 to $699{{cite pcmag-1985-07}}.</p>
+  <p>The larger significance was diplomatic. At 300 bit/s North America used Bell 103 and everyone else V.21. At 1,200 it was Bell 212A against V.22, close cousins but separate standards. At 2,400, AT&amp;T took part in the CCITT’s work, and there was one answer. “Much to the relief of most in the industry,” <cite>Computerworld</cite> wrote in 1986, “vendors have selected just one standard”{{cite cw-1986-standards}}. From here on, every mainstream dial-up speed is an international Recommendation first and a product second.</p>
+  <p class="disputed"><b>Disputed</b> V.22 bis carries the date 1984, when the CCITT’s plenary assembly approved it{{cite itu-v22bis}}, but <cite>PC Magazine</cite> dates the first products to 1982, built to the draft{{cite pcmag-1985-07}}. And the single world standard was not quite single: V.22 bis specifies V.22 as its 1,200 bit/s fallback, but some North American makers fell back to Bell 212A instead, and the Smartmodem 2400 needed a command to choose between Bell and CCITT behavior{{cite cw-1986-standards pcmag-1985-07}}.</p>
+
+  <h3>The optional extras that everybody wanted</h3>
+  <p>A 2,400 bit/s modem pushes sixteen dots through a line that pops and crackles, and V.22 bis does nothing about the errors that result. For a person reading text, a garbled character is an annoyance. For a program file it is ruin. James Dow, who founded Microcom in 1980, saw that personal computers had changed what modems were for:</p>
+
+  <blockquote class="pull">
+    <p>“So they’re going to be blasting files around, and you tell me how you’re going to send those files error free if you don’t put protocols in the modems?”</p>
+    <footer>James Dow, founder of Microcom, interviewed by James Pelkey, 1988{{cite dow-pelkey}}</footer>
+  </blockquote>
+
+  <p>Microcom’s answer, designed by Ed Belove and Greg Pearson, was the <strong>Microcom Networking Protocol</strong>{{cite dow-pelkey}}. An MNP modem cuts the data into numbered packets, adds a checksum to each, and resends any packet the other end says arrived damaged. The user sees a connection that is slightly slower on a bad line and never wrong. Microcom published the protocol in 1983 and licensed it; by 1988 Dow could claim that nearly every American modem maker except Hayes sold an MNP modem{{cite dow-pelkey}}. Later “classes” added refinements: Class 4 adjusted packet size to line quality, and Class 5 compressed the data, for a claimed overall gain of about 1.6 to 1{{cite pcmag-1988-04}}.</p>
+  <p>The CCITT’s own error-correction standard, <strong>V.42</strong> (1988), is a diplomatic document. Its main protocol, LAPM, is built on HDLC, a framing method already standard in data networks; MNP’s error control is included as a fallback in an annex that the text pointedly promises never to improve{{cite itu-v42 pcmag-1992-03}}. <strong>V.42 bis</strong> (1990) added compression using a Lempel-Ziv dictionary method submitted by British Telecom, with a refinement credited to John Copeland of Hayes: it watches whether compression is helping and switches itself off for data that will not compress, such as an encrypted file{{cite itu-v42bis nw-1989-v42bis}}.</p>
+  <p>Engineers on the standards committee said V.42 bis would raise throughput “by two to four times in most cases”{{cite nw-1989-v42bis}}. Marketing departments heard “four.” A 1992 press release for a 14,400 bit/s modem promised “up to 57,600 bps throughput” on the strength of “4:1 compression”{{cite st-report-supra}}. The standard itself promises no ratio. Plain text compressed well; files that had already been compressed, as most downloads were, gained little.</p>
+  <p>None of this is audible. Error correction and compression are negotiated after the handshake you can hear, once the two modems have a working connection and the speaker has clicked off.</p>
+
+  <aside class="sidebar" id="sb-fido">
+    <p class="label">Sidebar</p>
+    <h3>FidoNet: e-mail by long-distance call, at four in the morning</h3>
+    <p>A bulletin board was an island. In 1984 Tom Jennings, who ran one called Fido in San Francisco, and John Madill in Baltimore taught two boards to call each other and trade messages, largely, Jennings wrote, to see if it could be done{{cite jennings-1985}}. There were about 50 nodes by that September and more than 160 early the next year{{cite jennings-1985}}.</p>
+    <p>FidoNet was engineered around the telephone bill. Long-distance rates were lowest in the middle of the night, so boards stopped taking human callers for one designated hour and phoned each other instead{{cite bush-1993}}. In North America the hour was 4 to 5 a.m. Eastern{{cite fido-policy4}}. Mail for another city was batched and sent in a single call to a hub there, which passed it along as local calls. A message could cross the continent in a night or two for the price of a few minutes of long distance.</p>
+    <p>The whole system ran on a shared list of phone numbers, the nodelist, and a wrong digit had consequences:</p>
+    <blockquote class="pull"><p>“Imagine you are a poor old lady, who every single night is getting phone calls EVERY TWO MINUTES AT 4:00AM, no one says anything, then hangs up.”</p><footer>Tom Jennings, “FidoNet History and Operation,” 1985{{cite jennings-1985}}</footer></blockquote>
+    <p>Public discussion groups, “echomail,” arrived in 1986, the work of Jeff Rush{{cite bush-1993}}. The nodelist reached 20,000 systems by April 1993{{cite bush-1993}}; one count from archived nodelists puts the peak at 35,787 in June 1995{{cite fido-timeline}}, though other sources give somewhat different peaks.</p>
+  </aside>
+</section>

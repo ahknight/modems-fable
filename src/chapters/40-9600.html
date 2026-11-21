@@ -1,0 +1,71 @@
+<section class="chapter" id="c9600" data-nav="9600" data-sub="1984–1991">
+  <header class="chapter-head">
+    <p class="kicker">Chapter 4 · The wall</p>
+    <h2><span class="speed">9600<small>bits per second</small></span>Both of us, on the same frequencies, at once</h2>
+    <p class="dek">To quadruple the speed again, modems had to give up the oldest idea in the book: that each end gets its own slice of the line. Three inventions, each about fifteen years old, made it possible.</p>
+    <dl class="facts">
+      <div><dt>Standard</dt><dd>V.32 <small>CCITT, 1984</small></dd></div>
+      <div><dt>How bits become sound</dt><dd>Trellis-coded QAM <small>32 points</small></dd></div>
+      <div><dt>Symbols per second</dt><dd>2,400 baud</dd></div>
+      <div><dt>Bits per symbol</dt><dd>4 data + 1 redundant</dd></div>
+      <div><dt>Carrier</dt><dd>1,800 Hz <small>both directions</small></dd></div>
+      <div><dt>What it cost</dt><dd>about $2,500 <small>average V.32, early 1988</small></dd></div>
+    </dl>
+  </header>
+
+  <p>Sixteen dots at 600 symbols a second gave 2,400 bit/s. The obvious next step is to send symbols faster. But a signal that changes 2,400 times a second needs about 2,400 Hz of bandwidth, and a telephone line passes roughly 300 to 3,400 Hz in total. One 2,400-baud signal fills the line. There is no room left to give the other direction its own band.</p>
+
+  <h3>Three ways around, and three stopgaps</h3>
+  <p>Engineers knew three ways to hold a two-way conversation in one channel: split the frequencies, take turns, or have both ends talk over each other and somehow subtract your own voice from what you hear{{cite falconer-mueller-1979}}. The first was exhausted. The third was known to be best, since it is the only one that lets each direction use the whole band all the time, and in 1984 the CCITT wrote it into a standard, V.32. But building it took expensive signal-processing hardware, and for several years companies sold cleverer versions of the other two instead.</p>
+  <ul>
+    <li><strong>Telebit TrailBlazer</strong> (first shipped 1985). Instead of one fast carrier it used hundreds of slow ones side by side, tested at the start of each call to see which the line would carry, and sent data on those in alternating bursts. It came from a company co-founded and chaired by Paul Baran, and it cost $2,395 until a 1987 cut to $1,345{{cite telebit-10k nw-1987-telebit pcmag-1988-04}}. Keep its idea in mind; it returns in the epilogue.</li>
+    <li><strong>U.S. Robotics Courier HST</strong> (announced October 1986, $995). Asymmetric: 9,600 bit/s in whichever direction had more to say and 300 bit/s the other way, which suits a person downloading files. It spoke 9,600 only to another HST{{cite infoworld-1986-hst pcmag-1987-06-hst pcmag-1988-04}}.</li>
+    <li><strong>Hayes V-series Smartmodem 9600</strong> (June 1987, $1,299). “Ping-pong”: one direction at a time, with the line turned around, Hayes said, every 20 milliseconds, fast enough to feel simultaneous{{cite cw-1987-hayes-v}}.</li>
+  </ul>
+  <p>None of the three could talk to the others at speed. A reviewer surveying the field in 1988 gave fair warning:</p>
+  <blockquote class="pull">
+    <p>“This is not equipment to be used simply to connect to CompuServe or to chat with friends on a local bulletin board. It is high-speed, high-cost equipment […] bearing price tags that can top $2,000.”</p>
+    <footer>Howard Marks and M. David Stone, <cite>PC Magazine</cite>, April 26, 1988{{cite pcmag-1988-04}}</footer>
+  </blockquote>
+
+  <h3>Invention one: the line that corrects itself</h3>
+  <p>A pulse sent down a telephone line does not arrive as a pulse. It arrives smeared across time, overlapping its neighbors. At low speeds the smear is shorter than a symbol and does no harm. At 2,400 symbols a second it buries the data. And every line smears differently.</p>
+  <p>In 1965 Robert Lucky of Bell Labs published a filter that could measure the smearing by watching test pulses and adjust itself to cancel it; in 1966 he showed how it could keep adjusting during a call using the data itself{{cite lucky-1965 lucky-1966}}. This is the <strong>adaptive equalizer</strong>. Lucky said the idea raised the practical speed of modems from 2,400 to 9,600 bit/s, and remembered exactly where it came to him:</p>
+  <blockquote class="pull">
+    <p>“I made a good invention driving home one night while waiting at a red light in Red Bank, New Jersey. Sometimes I think about that when I’m stopped at that red light, because the idea just came to me in a flash.”</p>
+    <footer>Robert Lucky, IEEE oral history, 1999{{cite lucky-oral}}</footer>
+  </blockquote>
+  <p>The first ones were built from mechanical relays on a rack six feet high, and you could hear them think: “You’d turn on the modem and hear all these relays click-click,” Lucky recalled, as the equalizer went “wandering around in parameter space with no idea where it was going. Then suddenly it would get an idea and get hot on the track”{{cite lucky-oral}}. Every modem from 2,400 bit/s onward contains its descendant. The hiss at the start of a fast connection is, in large part, raw material for an equalizer to learn from.</p>
+
+  <h3>Invention two: subtracting yourself</h3>
+  <p>When you transmit into a phone line, some of your signal bounces back from the junction where your two-wire line meets the long-distance network’s four wires, and more bounces back from the far end a little later. On a voice call you hear this as echo. In 1966 M. M. Sondhi and A. J. Presti of Bell Labs described a device for long-distance voice circuits that learns what the echo of a given signal will be, synthesizes a copy and subtracts it; they named it the <strong>echo canceller</strong> and credited the underlying idea to their colleagues J. L. Kelly and B. F. Logan{{cite sondhi-presti-1966}}.</p>
+  <p>The same trick lets a modem hear a whisper while it is shouting. If it knows exactly what it sent, and has learned exactly how the line echoes, it can subtract its own echo from the incoming signal, and what remains is the other modem. Bell Labs researchers worked this out for data through the 1970s{{cite falconer-mueller-1979}}. It is the defining feature of V.32, and it explains two things you can hear. First, the answer tone now carries a tiny tick every 450 ms, a reversal of the tone’s phase, which is the agreed signal telling the <em>network’s</em> echo cancellers to stand aside, because the modems intend to do the job themselves{{cite itu-v25}}. Second, each modem must spend part of the handshake transmitting alone, so that everything it hears is its own echo and it can learn it.</p>
+
+  <h3>Invention three: the code nobody expected</h3>
+  <p>The third idea came from Gottfried Ungerboeck at IBM’s research laboratory near Zurich, who presented it at a conference in 1976 and published it fully in 1982{{cite ungerboeck-oral costello-forney}}. Everyone knew you could protect data from noise by adding redundant bits. On a phone line, where bandwidth is fixed, redundant bits had seemed to cost speed. Ungerboeck’s insight was to pay for the redundancy with <em>more dots</em> instead: double the constellation from 16 points to 32, so each symbol carries four data bits plus one extra, and choose the extra bit so that only certain <em>sequences</em> of dots are legal. Neighboring dots are closer together than before, but a receiver that looks at the whole recent path, not one symbol at a time, can tell that an impossible sequence has occurred and work out which legal one was meant. This is <strong>trellis-coded modulation</strong>. The net effect is as if the line had become several decibels quieter.</p>
+  <blockquote class="pull">
+    <p>“This was an incredible thing, because everyone thought there wasn’t a tenth of a dB left to be gotten – and he found 6 dB or so just lying around.”</p>
+    <footer>Robert Lucky on Ungerboeck’s trellis coding{{cite lucky-oral}}</footer>
+  </blockquote>
+  <p>The particular code written into V.32 is an eight-state design by Lee-Fang Wei, with a twist needed on real phone lines: it still decodes correctly if the whole constellation arrives rotated by a quarter turn. Its effective gain is about 3.6 dB{{cite forney-v34 costello-forney}}. (Lucky’s “6 dB or so” is generous; G. David Forney remembers modem designers seeing 3 to 4.) Forney, then at the modem maker Codex, never understood the delay: “Why this lag of at least five years, maybe seven years, between invention and anybody using it? It’s still a great mystery to me”{{cite forney-oral}}.</p>
+
+  <h3>The handshake becomes a procedure</h3>
+  <p>With echoes to learn, lines to equalize and a speed to agree on, the V.32 start-up has distinct phases{{cite itu-v32}}. Listen for them:</p>
+  <ol>
+    <li><strong>Answer tone, with ticks.</strong> One second in, the caller starts a steady 1,800 Hz tone right over it. For the first time, both modems are making sound together.</li>
+    <li><strong>Ranging.</strong> The answerer replies with two tones at once, 600 and 3,000 Hz, the edges of the band. Each side then flips its signal upside down and times the other’s response. They are measuring the round-trip delay of the line, so each knows how late its far echo will arrive.</li>
+    <li><strong>The answerer trains alone</strong>: a short rasp to mark time, then about half a second of scrambled signal on just four points, then a 16-bit word, repeated, listing the speeds it can do.</li>
+    <li><strong>The caller trains alone</strong>, the same way.</li>
+    <li><strong>Both together.</strong> The answerer trains once more with the caller still transmitting, each now canceling its own echo. They exchange final speed words and an end marker, and switch to the full constellation.</li>
+  </ol>
+
+  <figure class="player" id="p9600" data-call="v32" data-options='{"rate":9600}'>
+    <figcaption><span class="listen">Listen</span><h3>A 9,600 bit/s call</h3><p>The picture is the story: from the ranging tones onward, amber and teal occupy the same band, top to bottom. Solo each modem with the checkboxes to hear what the other end had to dig out from under its own echo.</p></figcaption>
+  </figure>
+
+  <p><strong>What changed from 2,400.</strong> Nearly everything after the answer tone. One carrier at 1,800 Hz, shared. Four times the symbol rate. Echo cancellation instead of separate bands. Half-duplex training periods. A code that corrects errors inside the modulation itself. And a real negotiation: the rate words let two modems settle on 9,600 or fall back to 4,800 before any data moves.</p>
+  <p><strong>Required and optional.</strong> V.32 offers two ways to send 9,600 bit/s, plain 16-point QAM or the 32-point trellis code, and requires every modem to support the plain one so that any two can connect; trellis coding is the better alternative both will choose if they have it{{cite itu-v32}}. Error correction and compression (V.42, V.42 bis, MNP) remain separate layers on top.</p>
+
+  <h3>From $23,000 to a chip</h3>
+  <p>None of this was new to the leased-line world. Forney recalls that the first commercial 9,600 bit/s modem, the Codex AE-96, shipped about 1969 for use on private leased lines, at $23,000{{cite forney-oral}}. What V.32 added was doing it on one ordinary dialed line. In early 1988 a V.32 modem averaged about $2,500{{cite pcmag-1988-04}}. The same article noted the development that would end the era of stopgaps: Rockwell had begun selling manufacturers a complete V.32 modem on a card for $450{{cite pcmag-1988-04}}. Ungerboeck, by his own account, had been sent by IBM to Rockwell to hand over a single-processor V.32 design: “They ordered me to go to Rockwell, tell them everything about it, and then let Rockwell build it for IBM”{{cite ungerboeck-oral}}.</p>
+</section>

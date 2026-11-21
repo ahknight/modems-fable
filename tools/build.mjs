@@ -91,7 +91,7 @@ body = body.replace(/(<figure class="player"[^>]*>)([\s\S]*?)<\/figure>/g, (_, o
   return `${open}${inner}
   <div class="p-mount"><p class="p-nojs">The interactive player needs JavaScript. Everything it plays is described in words below.</p></div>
   <div class="p-text">
-    <details class="steplist" open>
+    <details class="steplist"${attr(open, 'data-steps') === 'closed' ? '' : ' open'}>
       <summary>What you hear, step by step</summary>
       <ol class="steps">${stepsHtml(call)}
       </ol>

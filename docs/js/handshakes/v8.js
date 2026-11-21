@@ -32,8 +32,8 @@ export function menu({ v34 = true, pcm = false, digital = false } = {}) {
     octet('Protocol: V.42 error correction', '0101 0 100'),
   ];
   if (pcm) {
-    list.push(octet(`Network access: ${digital ? 'digital' : 'analogue'}`, `1011 0 00${digital ? 1 : 0}`));
-    list.push(octet(`V.90: ${digital ? 'digital' : 'analogue'} modem`, `1110 0 ${digital ? '01' : '10'}0`));
+    list.push(octet(`Network access: ${digital ? 'digital' : 'analog'}`, `1011 0 00${digital ? 1 : 0}`));
+    list.push(octet(`V.90: ${digital ? 'digital' : 'analog'} modem`, `1110 0 ${digital ? '01' : '10'}0`));
   }
   return list;
 }
@@ -112,7 +112,7 @@ export function v8(call, { t = 0, rt, pcm = false, v8bis = false }) {
   for (let x = 0.45; x < ansamLength; x += 0.45) reversals.push(x);
   call.step(ansam, 'Answer tone, now with a wobble', 'The 2100 Hz answer tone again, with its echo-canceller-defeating ticks every 450 ms. But now it also quivers, its loudness rising and falling fifteen times a second. That flutter is a flag to the caller: “I am a modern modem and I can negotiate. Send me your menu.” An old modem ignores the flutter and hears a plain answer tone.', 'V.8, 1994');
   call.put(ANSWERER, ansam, tone(2100, ansamLength, { amp: AMP / 1.2, reversals, am: { freq: 15, depth: 0.2 } }), 'ANSam 2100 Hz', 'nominal', 'V.8 7.2: 2100 Hz, amplitude-modulated ±20% at 15 Hz, phase reversed every 450 ± 25 ms. Sent until two identical CM sequences have been received.');
-  call.mark(CALLER, ansam, ansam + detect, 'Detecting', 'nominal', 'Time for the caller to recognise ANSam; implementation-dependent.');
+  call.mark(CALLER, ansam, ansam + detect, 'Detecting', 'nominal', 'Time for the caller to recognize ANSam; implementation-dependent.');
   call.mark(CALLER, ansam + detect, cmAt, 'Silence (Te)', 'spec', 'V.8 8.1.1: the caller stays silent for Te, at least 1 s when echo cancellers must be disabled.');
 
   const send = (who, at, track, freqs, label, note) => {

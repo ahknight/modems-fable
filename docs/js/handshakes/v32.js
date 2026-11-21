@@ -203,7 +203,7 @@ export function v32({ rate = 9600, roundTrip = 28 } = {}) {
   ansTones.states([A, C], Math.round((acEnd - ac2) / T), 'AC', 'nominal', 'Reverts to AC 64 ± 2 symbols after the caller’s reversal is received, until the caller’s tone is seen to stop.');
   ansTones.burst.emit();
 
-  call.step(aa, 'The caller hums along: 1800 Hz', 'One second into the answer tone, the calling modem starts a steady 1800 Hz tone of its own, right over the top. For the first time both modems will use the same frequencies, the whole voice band, at once. 1800 Hz is the centre of it.', 'V.32, 1984');
+  call.step(aa, 'The caller hums along: 1800 Hz', 'One second into the answer tone, the calling modem starts a steady 1800 Hz tone of its own, right over the top. For the first time both modems will use the same frequencies, the whole voice band, at once. 1800 Hz is the center of it.', 'V.32, 1984');
   call.step(ac, 'Two tones against one: measuring the echo', 'The answerer replies with a chord: 600 Hz and 3000 Hz, the two edges of the band. Now each side flips its tone upside down and times how long the other takes to flip back. It is sonar. The round-trip time tells each modem how far away its own echo will be coming from.', 'V.32, 1984');
 
   // -- First half-duplex training: answerer sends, caller listens ---------------
