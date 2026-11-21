@@ -106,3 +106,108 @@ Things the specs settled that I had wrong or fuzzy from memory:
 Caveat recorded now so it is not forgotten: these receivers are mine. The tests prove
 the audio is self-consistent with my reading of the standards, not that a 1985 modem
 would train on it. No hardware or third-party soft-modem was available to check against.
+
+### 18:00 — V.32, V.8, V.34, V.90 synthesis
+
+- `v32.js`: ranging (AA/CC against AC/CA/AC with 64T turnarounds), S/S̄/TRN, rate and E
+  words, Wei's 8-state trellis encoder, 32- and 128-point mappings. The encoder
+  equations were derived from Figure 2/V.32 by tracing the diagram; the 128-point map
+  was transcribed from Figure 2-1/V.32 bis and then checked by its rotational symmetry
+  (rotation flips Y0 and permutes Y1Y2; uncoded bits unchanged). All 128 labels pass,
+  which a misread would not.
+- `v8.js`: ANSam, CM/JM/CJ with real octets; optional V.8 bis CRe.
+- `v34.js`: INFO frames with CRC, Tone A/B ranging, L1/L2 probing, PP, TRN, J, MP, E.
+  Phase 2 is written once in terms of V.34's "call" and "answer" roles so V.90 can
+  reuse it with the roles swapped.
+- `v90.js`: µ-law Sd/S̄d/TRN1d/Jd/Jd′/Ri from the Ucode table; the DIL with an invented
+  descriptor; approximated Phase 4 and data.
+- Decision: **V.34 and V.90 data modes are approximations and say so.** Implementing
+  shell mapping, the 4D trellis code and precoding (and V.90's modulus encoder and
+  spectral shaper) would be most of both standards for no audible or visible gain. The
+  timeline shows these segments striped, and the page explains why.
+- Found while testing: the 02/98 text of V.34 §10.1.2.1 gives the guard tone "at the
+  nominal transmit power", which contradicts §10.1.2.3.1 (7 dB below) and would exceed
+  the nominal total. Used −7 dB; recorded in `notes/fidelity.md`.
+- Level budget: nominal level reduced from 0.2 to 0.15 RMS after the first V.90 build
+  peaked at 2.2× full scale (the DIL exercises the loudest codewords while the other
+  modem is sending scrambled ones). A test now asserts every call's mix stays below
+  full scale.
+- Tests: 21 passing. New ones decode V.32's printed TRN patterns from the audio,
+  recover text from trellis-coded data, verify V.8 octets, V.34 probe tones, INFO CRC,
+  J/J′ patterns and an MP frame, and V.90's PCM patterns.
+
+### 19:30 — Player, build pipeline, design
+
+- `player.js`: one reusable player. Spectrogram with one color per modem, labeled signal
+  lanes with fidelity styling, a "First appeared" strata lane, two lens windows
+  (bits / constellation / PCM ladder / waveform, chosen automatically from what each
+  modem is sending), narration panel, per-modem mute, left/right split, guided mode.
+- Narration and signal tables are rendered into the HTML at build time from the same
+  builder output, so they are the no-JavaScript text alternative.
+- Decision: the step list stays on screen permanently and the current step is
+  highlighted, instead of captions that appear and vanish. That, plus "Pause after each
+  step", is how the "text must stay long enough to read" requirement is met for
+  segments that last 100 ms.
+- Decision: no sound-producing object exists until a click. The test suite wraps
+  `AudioContext` and asserts the count is zero after load and after all players have
+  synthesized and drawn.
+- Visual direction: warm paper, IBM Plex (self-hosted, OFL), huge monospaced speed
+  numerals as chapter openers, dark instrument panels for every interactive.
+- First real-browser run (Chromium) worked on the first try.
+
+### 21:00 — Research in, chapters written
+
+Four research fact sheets arrived (about 330 claims and 60 quotations, each with its
+own disputed and could-not-verify lists). They corrected several things in my brief
+and in common lore; the important ones are listed in `notes/sources.md`. The chapters
+were written from the sheets and then each re-read against them; anything in a draft
+that the sheets did not support was cut or hedged.
+
+- 172 sources in `src/sources.json`; the build fails on an unknown key.
+- Verified myself by fetching: Hayes technical reference (call waiting, comma), ITU
+  Q.23 (DTMF), ITU E.180 tone list (U.S. dial and ringing tones), four patent titles.
+- Decision: the site does not describe the "bong/boing" many people remember from 56k
+  handshakes. I could not attribute it to a clause with confidence, and the brief is
+  explicit about not presenting guesses as protocol behavior.
+- American English throughout user-facing text (the ITU's "analogue", "signalling"
+  appear only in titles of cited documents).
+
+### 22:00 — Widgets and browser tests
+
+- Six widgets: type-to-FSK, constellation under noise, download-time calculator,
+  image-loading simulator (three styles, with play/pause/restart/seek), Shannon
+  capacity explorer, PCM level ladder. Each states its modeling assumptions in place.
+- `tests/browser.mjs` passes in Chromium 159, Firefox 159 and WebKit 27.2 (Playwright
+  1.65.1, headless). Two failures on the way were both test bugs: a bounding box read
+  during a smooth scroll, and my own arithmetic for the expected download time.
+
+### 23:00 — Media
+
+- Media research returned 28 license-verified images (12 public domain, 5 CC0,
+  11 CC BY; no ShareAlike on disk) with a manifest; 14 are used, including two I
+  fetched after checking their metadata with `tools/commons.mjs`.
+- Processed to ≤1280 px progressive JPEG; 1.4 MB total. One crop, to remove a video
+  game visible at the edge of a photograph.
+- Decision: no ShareAlike images, even though that costs us photographs of a Hayes
+  Smartmodem and a Bell data set. The brief allows SA in collections; avoiding it
+  keeps the license story simple.
+- Decision: no third-party audio. See `notes/media.md`.
+
+### Status at end of session 1
+
+Done: all eight milestones plus prologue and epilogue; eight sidebars; ten players;
+six widgets; 172 citations; 14 credited images; signal tests; three-engine browser
+tests; documentation in `notes/`.
+
+Unresolved (also in `notes/testing.md` and `notes/fidelity.md`):
+
+1. Nobody has listened to the audio.
+2. Nothing has been checked against a real modem, an independent implementation, or
+   a recording.
+3. Bell 103 and 212A behavior rests on secondary sources and on V.22's note.
+4. V.34/V.90 data and V.90 Phase 4 downstream are approximations.
+5. Handshakes are shorter than real ones (minimum training lengths, short detection
+   times).
+6. The spectrogram cannot be zoomed; dense stretches of the 56k call are cramped.
+7. Not tested: shipping Safari/Firefox/Chrome applications, mobile, screen readers,
+   the deployed GitHub Pages URL.

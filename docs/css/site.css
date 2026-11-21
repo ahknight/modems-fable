@@ -119,6 +119,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .masthead { padding: clamp(2.5rem, 7vw, 6rem) 0 1rem; }
 .masthead .kicker, .chapter-head .kicker { font: 600 0.8rem/1.3 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.8rem; }
+.masthead > .kicker { grid-column: wide; }
 .masthead h1 { font: 600 clamp(2.6rem, 8vw, 5.6rem)/0.98 var(--serif); letter-spacing: -0.02em; margin: 0 0 1.2rem; grid-column: wide; }
 .masthead h1 em { font-style: italic; font-weight: 400; }
 .masthead .standfirst { font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.5; margin: 0 0 1.5rem; }
@@ -181,12 +182,23 @@ figure { margin: 0; }
 .photo figcaption { font-size: 0.86rem; line-height: 1.45; color: var(--ink-2); margin-top: 0.5rem; }
 .photo .credit { display: block; font: 0.7rem/1.45 var(--mono); margin-top: 0.2rem; }
 .photo .credit a { color: inherit; }
-@media (min-width: 62rem) {
-  .chapter > .photo.right { grid-column: text-end / wide-end; grid-row: span 6; align-self: start; margin: 0.4rem 0 1rem 1.6rem; }
-  .chapter > .photo.pair { grid-column: wide; }
+/* Portraits sit in the right margin on wide screens, beside the paragraphs that follow. */
+.photo.right { max-width: 15rem; }
+@media (min-width: 72rem) {
+  .chapter > .photo.right { grid-column: text-end / wide-end; grid-row: span 4; align-self: start; margin: 0.4rem 0 1rem 1.6rem; max-width: none; }
 }
-.photo.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.photo.pair figcaption { grid-column: 1 / -1; }
+.photo.inset { float: right; width: 7.5rem; margin: 0.2rem 0 0.6rem 1rem; }
+.sidebar .photo:not(.inset) { max-width: 28rem; }
+.photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: end; margin: 2rem 0; }
+.photo-pair .photo { margin: 0; }
+@media (max-width: 40rem) { .photo-pair { grid-template-columns: 1fr; } }
+
+/* The inheritance table in the epilogue */
+table.inherit { border-collapse: collapse; width: 100%; font-size: 0.93rem; line-height: 1.45; margin: 1rem 0; min-width: 36rem; }
+table.inherit th, table.inherit td { text-align: left; vertical-align: top; padding: 0.55rem 1rem 0.55rem 0; border-bottom: 1px solid var(--rule); }
+table.inherit thead th { font: 600 0.68rem/1.3 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); border-bottom: 2px solid var(--ink); }
+table.inherit tbody th { font-weight: 600; width: 24%; }
+table.inherit td:nth-child(2) { font: 0.78rem/1.5 var(--mono); color: var(--ink-2); width: 17%; white-space: nowrap; }
 
 /* --- Instruments: shared chrome ------------------------------------------------- */
 

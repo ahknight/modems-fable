@@ -17,12 +17,16 @@
   <p>Lee Felsenstein needed a modem in 1973 for Community Memory, a public computer terminal in a Berkeley record store that reached its mainframe in San Francisco over a telephone line. The commercial unit he had been using cost about $300 and, he recalled, “was good for 300 baud under the most favorable circumstances”{{cite felsenstein-ae-1995}}. So he designed his own{{cite felsenstein-chm-oral}}.</p>
   <p>Modems of the time needed careful calibration, because the receiver had to decide which of two close-together tones it was hearing, and component values drift. Felsenstein’s trick was to stop measuring against a fixed reference. In ordinary typed data, the line returns to the “1” tone between every character; his receiver simply re-learned what “1” looked like each time it saw one{{cite pe-pennywhistle}}. The result was tolerant enough to work from a cassette recording played at slightly the wrong speed, and tolerant enough that an amateur could build it.</p>
 
+  {{photo felsenstein right}}
+
   <blockquote class="pull">
     <p>“It was designed not only to be buildable as a kit, which was something you weren’t supposed to be able to do with modems because of all the critical adjustments.”</p>
     <footer>Lee Felsenstein, Computer History Museum oral history, 2008{{cite felsenstein-chm-oral}}</footer>
   </blockquote>
 
   <p>It was published as the cover project of <cite>Popular Electronics</cite> in March 1976 under the name <strong>Pennywhistle</strong>, with a complete kit offered at $97.50{{cite pe-pennywhistle}}. It was an acoustic coupler, for exactly the reason the prologue describes: as the article put it, couplers “obviate the need for the user to pay installation and rental charges for the devices the telephone company requires for direct-line hookups”{{cite pe-pennywhistle}}. Felsenstein later said it “knocked modem prices down from $350 to $100”{{cite felsenstein-chm-oral}}. That is his own characterization, and we found no independent price survey, but a year and a half later the kit was still being advertised, at $129.95, as “the first professional quality modem available in kit form”{{cite byte-1977-09-mr-ad}}.</p>
+
+  {{photo pennywhistle}}
 
   <h3>The board from the dining room</h3>
   <p>In Atlanta, two engineers at National Data Corporation, Dennis Hayes and Dale Heatherington, pooled their money for an IMSAI 8080 computer kit and, once it worked, designed a modem to go inside it{{cite softalk-1981 heatherington-bio}}. The <strong>80-103A</strong> was a circuit board for the S-100 bus that the first hobby computers shared. First deliveries were in April 1977; assembled and tested it cost $279.95, and you could have the bare board for $49.95{{cite softalk-1981 byte-1977-08-hayes}}. Hayes’s house was the factory.</p>
@@ -35,6 +39,8 @@
   <p>What made it different was not the signaling, which was plain Bell 103. It was that the modem lived <em>inside</em> the computer, where software could reach it. A program could tell the board to dial a number, or to answer the phone when it rang, with no human touching a handset{{cite byte-1977-08-hayes}}. It still needed the phone company’s rented coupler to be legal{{cite hayes-80103a-manual}}. The Micromodem II for the Apple II, on dealers’ shelves by 1979, solved that by shipping with its own FCC-registered line interface{{cite byte-1979-10-hayes-ad}}. And in the spring of 1981 came a box that sat <em>outside</em> any computer with a serial port, plugged directly into a modular phone jack, and took its orders as typed text: the Smartmodem, $279{{cite softalk-1981 byte-1981-05-smartmodem-ad}}. Its command language outlived every modem in this story; see the sidebar below.</p>
 
   <p>A programmable modem changes what a computer is for. In Chicago, Ward Christensen and Randy Suess put a Hayes board in a homemade machine in January 1978, and a month later it was answering the phone by itself: the first dial-up bulletin board system{{cite byte-1978-11-cbbs}}.</p>
+
+  {{photo atari-coupler}}
 
   <h3>How 300 bits per second works</h3>
   <p>The scheme is called <strong>frequency-shift keying</strong>, and it is the simplest idea in this whole history: to send a 1, whistle one note; to send a 0, whistle another. Bell 103’s caller uses 1,270 and 1,070 Hz, its answerer 2,225 and 2,025 Hz{{cite pe-pennywhistle}}. Each bit lasts one three-hundredth of a second. A typed character is sent as ten of them: a 0 to announce that a character is starting, eight data bits, and a 1 to finish. That makes 30 characters a second, close to the speed at which many people read.</p>
@@ -74,6 +80,7 @@
     <p>January 16, 1978 was, in Ward Christensen’s words, “a very snowy day” in Chicago. Unable to dig out, he phoned Randy Suess, and the two decided to build a computer that other hobbyists could call{{cite birth-of-bbs}}. Christensen wrote the software; Suess built the hardware around his Hayes modem board and insisted it live at his house in the city rather than be run as a club project. They announced it at their computer club and asked how many members could call in.</p>
     <blockquote class="pull"><p>“We expected perhaps five or ten, but 25 hands were raised!”</p><footer>Ward Christensen and Randy Suess, <cite>BYTE</cite>, November 1978{{cite byte-1978-11-cbbs}}</footer></blockquote>
     <p>They called it CBBS, the Computerized Bulletin Board System, and gave its birthday as February 16, 1978, a date Christensen later admitted they picked after the fact{{cite birth-of-bbs}}. One caller at a time, on one phone line. Christensen had already written, the previous summer, the little program whose file-transfer method became XMODEM, the first way most people ever sent a file between two personal computers. He called it “a quick hack I threw together, very unplanned (like everything I do)”{{cite forsberg-xmodem}}.</p>
+    {{photo bbs-login}}
     <p>The idea spread to anyone with a spare phone line. By the end of 1992 the editor of <cite>Boardwatch</cite> magazine counted some 45,000 public boards in the United States with more than 12 million callers, and expected more than half of those boards to vanish and be replaced within a year{{cite wired-1993-rickard}}. They had message forums, file libraries and “door games” such as <cite>Legend of the Red Dragon</cite> and <cite>TradeWars 2002</cite>, played one turn a day{{cite pcmag-2016-doors}}. Each board was somebody’s computer, in somebody’s house, with a modem set to <code>ATS0=1</code>.</p>
   </aside>
 </section>

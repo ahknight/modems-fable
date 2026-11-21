@@ -1,1 +1,100 @@
-{}
+{
+  "sage-console": {
+    "file": "sage-console.jpg", "width": 1280, "height": 892,
+    "alt": "A SAGE air-defense operator console: a large round display screen set in a gray panel of switches, with a pistol-shaped light gun resting on the desk",
+    "caption": "An operator’s console from the SAGE air-defense system, with its light gun, at the Computer History Museum. SAGE’s radar sites and computers were linked by modems over telephone lines.",
+    "credit": "Photo: Tomwsulcer, via Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:SAGE_console_and_light_gun_at_CHM.jpg", "changes": "Resized"
+  },
+  "teletype-33": {
+    "file": "teletype-33.jpg", "width": 1280, "height": 853,
+    "alt": "A Teletype Model 33: a beige electromechanical terminal with a typewriter-style keyboard, a roll of printed paper, and a paper-tape punch and reader on its left side",
+    "caption": "A Teletype Model 33, photographed in 2025. Electromechanical terminals like this are what low-speed modems were first built to connect.",
+    "credit": "Photo: PantheraLeo1359531, via Wikimedia Commons", "license": "CC BY 4.0", "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Teletype_ASR-33_at_Classic_Computing_in_Hof_20250914_(cropped).jpg", "changes": "Resized"
+  },
+  "novation-cat": {
+    "file": "novation-cat.jpg", "width": 1280, "height": 978,
+    "alt": "A flat black acoustic-coupler modem with two round rubber cups on top, and a cream-colored telephone handset lying beside it",
+    "caption": "An acoustic coupler: a Novation CAT, sold from 1979. The telephone handset is pressed into the two rubber cups, mouthpiece over the modem’s loudspeaker and earpiece over its microphone. No wire connects the modem to the telephone network.",
+    "credit": "Photo: G. Edward Johnson, via Wikimedia Commons", "license": "public domain (released by the photographer)",
+    "source": "https://commons.wikimedia.org/wiki/File:Acoustic_coupler_20041015_175456_1.jpg", "changes": "Resized"
+  },
+  "pennywhistle": {
+    "file": "pennywhistle.jpg", "width": 1280, "height": 709,
+    "alt": "Black-and-white product illustration of the Pennywhistle 103: a low rectangular box with two round wells on top for a telephone handset and a row of small switches on the front",
+    "caption": "The Pennywhistle 103, from the kit’s 1976 documentation. The two wells hold a telephone handset.",
+    "credit": "M&R Electronics, Inc., via Wikimedia Commons", "license": "public domain in the United States (published 1976 without a copyright notice, according to its Commons page)",
+    "source": "https://commons.wikimedia.org/wiki/File:Pennywhistle_103.jpg", "changes": "Resized"
+  },
+  "felsenstein": {
+    "file": "felsenstein.jpg", "width": 640, "height": 870,
+    "alt": "Lee Felsenstein, a man with gray hair and glasses in a blue shirt, smiling beside a microphone",
+    "caption": "Lee Felsenstein in 2007.",
+    "credit": "Photo: Marcin Wichary, cropped by Gorinin, via Wikimedia Commons", "license": "CC BY 2.0", "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Lee_Felsenstein.02.jpg", "changes": "Resized"
+  },
+  "atari-coupler": {
+    "file": "atari-coupler.jpg", "width": 1280, "height": 653,
+    "alt": "A home computer keyboard on a desk beside an acoustic modem with an orange telephone handset seated in its cups, a rotary telephone, and a cassette recorder",
+    "caption": "Going online at home, early 1980s style: an Atari 800XL, a Radio Shack acoustic modem with the handset in place, the telephone it belongs to, and a cassette recorder for storage. A 2019 exhibition setup.",
+    "credit": "Photo: Wolfgang Stief, via Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Atari_800XL_with_Modem.jpg", "changes": "Cropped at the top and resized"
+  },
+  "bbs-login": {
+    "file": "bbs-login.png", "width": 663, "height": 621,
+    "alt": "A text-only screen: a login prompt asking for a user name and password, a message of the day, and a main menu of lettered choices such as Msgs Areas, File Areas and Chat Rooms",
+    "caption": "What a caller saw: log in, read the message of the day, pick a letter. This is a 2010 screenshot of a modern revival of the Telegard BBS software, not a period capture.",
+    "credit": "Screenshot: Chris Tusa, via Wikimedia Commons", "license": "public domain (released by the author)",
+    "source": "https://commons.wikimedia.org/wiki/File:20101106_opentelegard_login_screenshot.png", "changes": "Unaltered"
+  },
+  "baudot": {
+    "file": "baudot.jpg", "width": 293, "height": 397,
+    "alt": "Engraved portrait of Émile Baudot, a bearded man in a dark coat",
+    "caption": "Émile Baudot, in an engraving made before 1903.",
+    "credit": "Engraving: A. Delzers, via Wikimedia Commons", "license": "public domain (the engraver died in 1943)",
+    "source": "https://commons.wikimedia.org/wiki/File:Emile_Baudot.jpg", "changes": "Unaltered apart from recompression"
+  },
+  "modem-stack": {
+    "file": "modem-stack.jpg", "width": 600, "height": 800,
+    "alt": "Six external modems of the early 1990s stacked on top of one another, their front panels showing rows of indicator lights",
+    "caption": "A stack of early-1990s external modems, among them a USRobotics Courier V.32 bis and a Hayes Optima.",
+    "credit": "Photo: Szumyk (as attributed by Wikimedia Commons)", "license": "public domain (released by the uploader)",
+    "source": "https://commons.wikimedia.org/wiki/File:Modems.jpg", "changes": "Recompressed"
+  },
+  "sportster-336": {
+    "file": "sportster-336.jpg", "width": 1280, "height": 960,
+    "alt": "A dark gray external modem with a curved top and the words Sportster Voice 33.6 Faxmodem on its front edge",
+    "caption": "A USRobotics Sportster Voice 33.6 external modem.",
+    "credit": "Photo: Xiaowei, via Wikimedia Commons", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:US_Robotics_33.6K_Modem_Front.JPG", "changes": "Resized"
+  },
+  "shannon": {
+    "file": "shannon.jpg", "width": 640, "height": 800,
+    "alt": "Claude Shannon, a slender man in a tweed jacket and tie, in a studio portrait",
+    "caption": "Claude Shannon, about 1956.",
+    "credit": "Bell Telephone Laboratories; scan by Tekniska museet (CC BY 2.0), via Wikimedia Commons", "license": "public domain in the United States (published 1956 without a copyright notice, according to its Commons page)",
+    "source": "https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069.jpg", "changes": "Resized"
+  },
+  "sportster-56k": {
+    "file": "sportster-56k.jpg", "width": 1280, "height": 675,
+    "alt": "A dark gray external modem with the words Sportster Voice 56K Faxmodem on its front edge",
+    "caption": "The same box, one generation on: a USRobotics Sportster 56K.",
+    "credit": "Photo: Xiaowei, via Wikimedia Commons", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:US_Robotics_56K_Modem_Front.JPG", "changes": "Resized"
+  },
+  "adsl-modem": {
+    "file": "adsl-modem.jpg", "width": 1280, "height": 851,
+    "alt": "A small white DSL modem with a row of indicator lights on its front",
+    "caption": "A DSL modem (a Deutsche Telekom Teledat 431).",
+    "credit": "Photo: Tors, via Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Telekom_Teledat_431_LAN_Front.jpg", "changes": "Resized"
+  },
+  "cable-modem": {
+    "file": "cable-modem.jpg", "width": 1280, "height": 652,
+    "alt": "A black upright cable modem with a column of indicator lights",
+    "caption": "A cable modem (a Motorola SurfBoard for the European version of DOCSIS 3.0). Neither box makes a sound.",
+    "credit": "Photo: Larocomp, via Wikimedia Commons", "license": "public domain (released by the photographer)",
+    "source": "https://commons.wikimedia.org/wiki/File:Motorola_SurfBoard_SBV_6120E_cable_modem.jpg", "changes": "Resized"
+  }
+}
