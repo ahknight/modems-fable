@@ -37,7 +37,8 @@ off-site requests; no `AudioContext` before a click; all ten players synthesize 
 draw; play, pause, restart, next step, seek by keyboard (Home/End on the slider, Enter
 on buttons) and by clicking the picture; the playhead tracks the audio clock (1.5 s
 after 1.6 s of play); guided mode stops at the step boundary; variants re-synthesize
-and re-render the text; starting one player stops another; all six widgets render and
+and re-render the text; starting one player stops another; zoom stretches the
+timeline four times and centers the playhead; all six widgets render and
 respond with the expected computed values; playback under `prefers-reduced-motion`;
 and, with JavaScript disabled, the presence of the step text, signal tables and sources.
 

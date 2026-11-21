@@ -232,3 +232,15 @@ What the clock and `git log` actually say for 2026-11-20 (CST):
 
 So the whole of "session 1" took a little over two hours, not the seven the headings
 imply. Future entries will take their time from `date`.
+
+### 18:16 CST — Zoom, and cheaper playback
+
+- Added a 4× zoom to every player. The timeline scrolls sideways and follows the
+  playhead; lane names and axis labels stay fixed. At 4× the 56k call's Phase 3 is
+  legible: the DIL's stepped levels show as a staircase.
+- Playback no longer repaints the spectrogram canvas. The dimming of the unplayed part
+  is now an overlay element, so a frame costs two style updates plus the lens.
+- Fixed: hovering a selected variant or the pressed zoom button made its label
+  unreadable (hover background with selected text color).
+- Browser suite re-run, with a new zoom check: Chromium, Firefox, WebKit all pass.
+- An independent fact-check of the prose against the research sheets is running.

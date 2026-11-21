@@ -143,6 +143,14 @@ async function check(engine) {
     const total = Number(await q.locator('.p-seek').getAttribute('max'));
     assert.ok(Math.abs(mid - total / 2) < 0.3, `clicking mid-picture seeks to the middle (${mid} of ${total})`);
 
+    // Zoom stretches the timeline four times and keeps the playhead in view.
+    await q.locator('.p-zoom').click();
+    const view = await q.locator('.p-scroll').evaluate((el) => ({ scroll: el.scrollWidth, client: el.clientWidth, left: el.scrollLeft }));
+    assert.ok(view.scroll > 3.9 * view.client, `zoomed timeline is four times as wide (${view.scroll} vs ${view.client})`);
+    assert.ok(Math.abs(view.left + view.client / 2 - view.scroll / 2) < 4, 'zoom centers on the playhead');
+    await q.locator('.p-zoom').click();
+    assert.equal(await q.locator('.p-scroll').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), true, 'zoom out restores the full view');
+
     // Widgets.
     for (const [name, probe] of [
       ['typer', async (w) => {

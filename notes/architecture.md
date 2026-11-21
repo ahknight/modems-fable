@@ -92,5 +92,12 @@ and everything that animates has pause, restart and seek controls.
 - No audio recordings are included. The freely licensed recordings found do not say
   which standard they show, and the ones that do are ShareAlike; see `media.md`.
 - No analytics, no external requests of any kind (a browser test asserts this).
-- No horizontal zoom on the spectrogram. The lens windows cover fine detail; a zoomable
-  timeline is the most useful missing feature.
+- The spectrogram zooms to one fixed factor (4×), not continuously. The lens windows
+  cover finer detail.
+
+## 10. Repainting
+
+The spectrogram canvas is drawn only when the picture changes (load, resize, zoom,
+mute). The dimming of the not-yet-played part and the playhead are two positioned
+elements moved during playback, so a frame of playback costs two style changes and
+two small lens redraws, not a full-canvas repaint.

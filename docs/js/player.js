@@ -45,6 +45,8 @@ export class Player {
     this.playing = false;
     this.loaded = false;
     this.muted = [false, false, false];
+    this.zoom = 1;
+    this.scrubbing = false;
     this.split = false;
     this.guided = false;
     this.theme = themeFrom(figure);
@@ -66,14 +68,19 @@ export class Player {
     const variantButtons = this.variants.map((v, i) => `<button type="button" role="radio" aria-checked="${i === 0}" data-variant="${i}">${escapeHtml(v.label)}</button>`).join('');
     mount.innerHTML = `
       ${this.variants.length ? `<div class="p-variants" role="radiogroup" aria-label="Variant">${variantButtons}</div>` : ''}
-      <div class="p-stage">
-        <div class="p-screen">
-          <canvas class="p-spectro" aria-hidden="true"></canvas>
-          <div class="p-axis" aria-hidden="true"><span style="bottom:25%">1 kHz</span><span style="bottom:50%">2 kHz</span><span style="bottom:75%">3 kHz</span></div>
-          <div class="p-status" role="status">Synthesizing from the standard…</div>
+      <div class="p-view">
+        <div class="p-scroll">
+          <div class="p-stage">
+            <div class="p-screen">
+              <canvas class="p-spectro" aria-hidden="true"></canvas>
+              <div class="p-shade" aria-hidden="true"></div>
+            </div>
+            <div class="p-lanes" aria-hidden="true"></div>
+            <div class="p-head-line" aria-hidden="true"></div>
+          </div>
         </div>
-        <div class="p-lanes" aria-hidden="true"></div>
-        <div class="p-head-line" aria-hidden="true"></div>
+        <div class="p-axis" aria-hidden="true"><span style="bottom:25%">1 kHz</span><span style="bottom:50%">2 kHz</span><span style="bottom:75%">3 kHz</span></div>
+        <div class="p-status" role="status">Synthesizing from the standard…</div>
       </div>
       <input class="p-seek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Position in recording" disabled>
       <div class="p-transport">
@@ -82,6 +89,7 @@ export class Player {
         <button type="button" class="p-prev" disabled title="Previous step"><span aria-hidden="true">◀◀</span><span class="sr">Previous step</span></button>
         <button type="button" class="p-next" disabled title="Next step"><span aria-hidden="true">▶▶</span><span class="sr">Next step</span></button>
         <output class="p-time">0:00.0</output>
+        <button type="button" class="p-zoom" aria-pressed="false" disabled title="Stretch the timeline to four times its width">Zoom in</button>
         <span class="p-spacer"></span>
         <span class="p-mix" role="group" aria-label="What to hear and see"></span>
         <label class="p-check"><input type="checkbox" class="p-split"> Split left/right</label>
@@ -100,6 +108,7 @@ export class Player {
     const q = (sel) => mount.querySelector(sel);
     Object.assign(this, {
       stage: q('.p-stage'), screen: q('.p-screen'), canvas: q('.p-spectro'), status: q('.p-status'), lanesEl: q('.p-lanes'), headLine: q('.p-head-line'),
+      scroller: q('.p-scroll'), shade: q('.p-shade'), zoomButton: q('.p-zoom'),
       seek: q('.p-seek'), playButton: q('.p-play'), time: q('.p-time'), mixEl: q('.p-mix'), lensesEl: q('.p-lenses'),
       stepNo: q('.p-stepno'), originEl: q('.p-origin'), stepTitle: q('.p-step-title'), stepText: q('.p-step-text'), tally: q('.p-tally'),
     });
@@ -111,6 +120,14 @@ export class Player {
     q('.p-prev').addEventListener('click', () => this.jump(-1));
     q('.p-next').addEventListener('click', () => this.jump(1));
     this.seek.addEventListener('input', () => this.seekTo(Number(this.seek.value)));
+    this.zoomButton.addEventListener('click', () => {
+      this.zoom = this.zoom > 1 ? 1 : 4;
+      this.zoomButton.setAttribute('aria-pressed', String(this.zoom > 1));
+      this.zoomButton.textContent = this.zoom > 1 ? 'Zoom out' : 'Zoom in';
+      this.stage.style.width = `${this.zoom * 100}%`;
+      this.paint();
+      this.update(true);
+    });
     q('.p-split').addEventListener('change', (e) => { this.split = e.target.checked; this.route(); });
     q('.p-guided').addEventListener('change', (e) => { this.guided = e.target.checked; if (this.playing) this.play(); });
     q('.p-vol').addEventListener('input', (e) => {
@@ -137,9 +154,13 @@ export class Player {
     this.stage.addEventListener('pointerdown', (e) => {
       if (!this.loaded || e.button !== 0) return;
       this.stage.setPointerCapture(e.pointerId);
+      this.scrubbing = true; // do not re-center a zoomed view under the pointer
       scrub(e);
       this.stage.addEventListener('pointermove', scrub);
-      this.stage.addEventListener('pointerup', () => this.stage.removeEventListener('pointermove', scrub), { once: true });
+      this.stage.addEventListener('pointerup', () => {
+        this.scrubbing = false;
+        this.stage.removeEventListener('pointermove', scrub);
+      }, { once: true });
     });
     this.figure.addEventListener('click', (e) => {
       const go = e.target.closest('.step-go');
@@ -267,27 +288,18 @@ export class Player {
     return [g, box.width, box.height];
   }
 
-  /** Redraw the spectrogram: everything dim, the part already played at full brightness. */
+  /**
+   * Draw the spectrogram. This happens only when the picture itself changes
+   * (load, resize, zoom, mute); the "not yet played" dimming is a separate
+   * overlay moved by update(), so playback never repaints the canvas.
+   */
   paint() {
     if (!this.loaded) return;
     const [g, w, h] = this.fit(this.canvas);
-    const image = this.spectrogramImage();
-    const x = (this.now() / this.duration) * w;
     g.fillStyle = this.theme.panel;
     g.fillRect(0, 0, w, h);
     g.imageSmoothingEnabled = true;
-    g.globalAlpha = 0.42;
-    g.drawImage(image, 0, 0, w, h);
-    g.globalAlpha = 1;
-    if (x > 0) {
-      g.save();
-      g.beginPath();
-      g.rect(0, 0, x, h);
-      g.clip();
-      g.fillRect(0, 0, w, h);
-      g.drawImage(image, 0, 0, w, h);
-      g.restore();
-    }
+    g.drawImage(this.spectrogramImage(), 0, 0, w, h);
     g.strokeStyle = this.theme.grid;
     g.lineWidth = 1;
     g.beginPath();
@@ -298,13 +310,20 @@ export class Player {
     g.stroke();
   }
 
-  /** Bring every playhead-dependent part of the UI up to date. */
-  update() {
+  /**
+   * Bring every playhead-dependent part of the UI up to date.
+   * @param {boolean} [recenter] scroll a zoomed timeline to the playhead even when paused
+   */
+  update(recenter = false) {
     if (!this.loaded) return;
     const t = this.now();
     const { call } = this;
-    this.paint();
-    this.headLine.style.left = `${(100 * t) / this.duration}%`;
+    const at = `${(100 * t) / this.duration}%`;
+    this.headLine.style.left = at;
+    this.shade.style.left = at;
+    if (this.zoom > 1 && !this.scrubbing && (this.playing || recenter)) {
+      this.scroller.scrollLeft = (t / this.duration) * this.stage.offsetWidth - this.scroller.clientWidth / 2;
+    }
     if (document.activeElement !== this.seek || this.playing) this.seek.value = String(t);
     this.seek.setAttribute('aria-valuetext', `${clock(t)} of ${clock(this.duration)}`);
     this.time.textContent = `${clock(t)} / ${clock(this.duration)}`;
@@ -436,7 +455,7 @@ export class Player {
     if (!this.loaded) return;
     this.t = Math.max(0, Math.min(this.duration, t));
     if (this.playing) this.play(this.t);
-    else this.update();
+    else this.update(true);
   }
 
   /** Move to the previous or next narration step. */
